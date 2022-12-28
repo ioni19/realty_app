@@ -16,7 +16,7 @@ const Tabs = () => {
       screenOptions={{
         tabBarActiveTintColor: mainColor,
         tabBarInactiveTintColor: '#c3c3c3',
-        // headerShown: false,
+        headerShown: false,
       }}>
       <Tab.Screen
         name="처방전"

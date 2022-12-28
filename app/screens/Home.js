@@ -1,12 +1,20 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import styled from 'styled-components/native';
+import {View, Text, SafeAreaView} from 'react-native';
 
 const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <SafeView>
+      <View>
+        <Text></Text>
+      </View>
+    </SafeView>
   );
 };
+
+const SafeView = styled.SafeAreaView`
+  background-color: white;
+  height: 10px;
+`;
 
 export default Home;
