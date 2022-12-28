@@ -1,8 +1,15 @@
 import React from 'react';
-import {} from 'react-native';
+import {View, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {StyleSheet} from 'react-native';
+import AppNavigator from './app/navigators/AppNavigator';
 
 const App = () => {
-  return null;
+  return (
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
+  );
 };
 
 const styles = StyleSheet.create({});

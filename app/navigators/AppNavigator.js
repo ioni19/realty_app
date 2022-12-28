@@ -1,10 +1,65 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/dist/Ionicons';
+import Report from '../screens/Report';
+import Prescription from '../screens/Prescription';
+import Search from '../screens/Search';
+import My from '../screens/My';
+import Home from '../screens/Home';
+import {mainColor} from '../theme/color';
+
+const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
-  <View>
-    <Text></Text>
-  </View>;
+  return (
+    <Tab.Navigator screenOptions={{tabBarActiveTintColor: mainColor}}>
+      <Tab.Screen
+        name="처방전"
+        component={Prescription}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Ionicons name={'document-text'} color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="검색"
+        component={Search}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Ionicons name={'search-outline'} color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="홈"
+        component={Home}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Ionicons name={'home-outline'} color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="레포트"
+        component={Report}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Ionicons name={'newspaper-outline'} color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="마이페이지"
+        component={My}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Ionicons name={'apps'} color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
 };
 
 export default AppNavigator;

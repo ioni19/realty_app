@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const Card = () => {
+const Prescription = () => {
   return (
     <View>
-      <Text></Text>
+      <Text>Prescription</Text>
     </View>
   );
 };
 
-export default Card;
+export default Prescription;
