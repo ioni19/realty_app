@@ -2,12 +2,12 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {StyleSheet} from 'react-native';
-import AppNavigator from './app/navigators/AppNavigator';
+import Tabs from './app/navigators/Tabs';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <AppNavigator />
+      <Tabs />
     </NavigationContainer>
   );
 };

@@ -10,9 +10,14 @@ import {mainColor} from '../theme/color';
 
 const Tab = createBottomTabNavigator();
 
-const AppNavigator = () => {
+const Tabs = () => {
   return (
-    <Tab.Navigator screenOptions={{tabBarActiveTintColor: mainColor}}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: mainColor,
+        tabBarInactiveTintColor: '#c3c3c3',
+        // headerShown: false,
+      }}>
       <Tab.Screen
         name="처방전"
         component={Prescription}
@@ -27,7 +32,7 @@ const AppNavigator = () => {
         component={Search}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Ionicons name={'search-outline'} color={color} size={size} />
+            <Ionicons name={'search-sharp'} color={color} size={size} />
           ),
         }}
       />
@@ -36,7 +41,7 @@ const AppNavigator = () => {
         component={Home}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Ionicons name={'home-outline'} color={color} size={size} />
+            <Ionicons name={'home'} color={color} size={size} />
           ),
         }}
       />
@@ -62,4 +67,4 @@ const AppNavigator = () => {
   );
 };
 
-export default AppNavigator;
+export default Tabs;
