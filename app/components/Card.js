@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
-import {View, Text, StyleSheet, Image} from 'react-native';
-import {mainColor, SCREEN_HEIGHT} from '../theme/theme';
+import {mainColor} from '../theme/theme';
+import {imgArr} from '../mockData/defaultImg';
 
-const Card = () => {
+const Card = ({data}) => {
+  const {id, name, info} = data;
   return (
     <CardContainer>
       <TextArea>
         <Title>
-          <Name>{`오산원동힐스테이트테스트중`.slice(0, 9)}</Name>
-          <SmallText color={'rgba(0, 0, 0, 0.7)'}>118m²(36평)</SmallText>
+          <Name>{name.length > 10 ? name.slice(0, 9) + `...` : name}</Name>
+          <SmallText color={'rgba(0, 0, 0, 0.7)'}>{info.space}</SmallText>
         </Title>
         <Content>
           <TextContent>
@@ -18,23 +19,31 @@ const Card = () => {
               <SmallText name>예측</SmallText>
               <VeticalLine />
               <Ionicons color={mainColor} name="caret-down-outline"></Ionicons>
-              <SmallText color={mainColor}>-10 %</SmallText>
+              <SmallText color={mainColor}>{info.prediction} %</SmallText>
             </TextBox>
             <TextBox>
               <SmallText name>매매가</SmallText>
               <VeticalLine />
-              <SmallText>4.0억</SmallText>
+              <SmallText>{info.sellingPrice}억</SmallText>
             </TextBox>
             <TextBox>
               <SmallText name>전세가</SmallText>
               <VeticalLine />
-              <SmallText>2.8억</SmallText>
+              <SmallText>{info.jeonsePrice}억</SmallText>
             </TextBox>
           </TextContent>
           <GraphContent></GraphContent>
         </Content>
       </TextArea>
-      <ImgArea></ImgArea>
+      <ImgArea>
+        {info.realImg === '' ? (
+          <DefaultImg
+            source={imgArr[Math.floor(Math.random() * imgArr.length)]}
+          />
+        ) : (
+          <RealImg source={{uri: info.realImg}} />
+        )}
+      </ImgArea>
     </CardContainer>
   );
 };
@@ -91,11 +100,24 @@ const VeticalLine = styled(SmallText)`
 
 const GraphContent = styled.View``;
 
-const ImgArea = styled.Image`
+const ImgArea = styled.View`
   border: 0.5px solid lightgray;
   border-radius: 12px;
   height: 85px;
   width: 85px;
+`;
+
+const RealImg = styled.Image`
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+`;
+
+const DefaultImg = styled(RealImg)`
+  border-radius: 12px;
+  width: 50%;
+  height: 50%;
+  margin: auto;
 `;
 
 export default Card;
