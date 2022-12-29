@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import {View, Text, StyleSheet, Image} from 'react-native';
-import {mainColor} from '../theme/theme';
+import {mainColor, SCREEN_HEIGHT} from '../theme/theme';
 
 const Card = () => {
   return (
@@ -42,11 +42,12 @@ const Card = () => {
 const CardContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin: 15px;
+  width: 90%;
+  margin: 10px auto;
   padding: 20px 25px;
   background-color: white;
   border-radius: 4px;
-  height: 120px;
+  height: 130px;
 `;
 
 const TextArea = styled.View``;
@@ -63,7 +64,8 @@ const Name = styled.Text`
 
 const SmallText = styled.Text`
   margin: 0 4px;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 300;
   color: ${props => (props.name ? 'rgba(0,0,0,0.6)' : props.color)};
 `;
 
@@ -78,7 +80,7 @@ const TextContent = styled.View`
 const TextBox = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 6px;
 `;
 
 const VeticalLine = styled(SmallText)`
@@ -92,8 +94,8 @@ const GraphContent = styled.View``;
 const ImgArea = styled.Image`
   border: 0.5px solid lightgray;
   border-radius: 12px;
-  height: 80px;
-  width: 80px;
+  height: 85px;
+  width: 85px;
 `;
 
 export default Card;
