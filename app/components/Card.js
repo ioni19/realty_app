@@ -114,7 +114,7 @@ const RealImg = styled.Image`
 `;
 
 const DefaultImg = styled(RealImg)`
-  border-radius: 12px;
+  border-radius: 0;
   width: 50%;
   height: 50%;
   margin: auto;
