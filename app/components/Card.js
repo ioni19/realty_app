@@ -6,43 +6,54 @@ import {imgArr} from '../mockData/defaultImg';
 
 const Card = props => {
   const {id, name, info} = props.data;
+  const {space, prediction, sellingPrice, jeonsePrice, realImg} = info;
+
   const navigateDetail = props.function;
   return (
     <CardContainer activeOpacity={1} onPress={navigateDetail}>
       <TextArea>
         <Title>
           <Name>{name.length > 10 ? name.slice(0, 9) + `...` : name}</Name>
-          <SmallText color={'rgba(0, 0, 0, 0.7)'}>{info.space}</SmallText>
+          <SmallText color={'rgba(0, 0, 0, 0.7)'}>{space}</SmallText>
         </Title>
         <Content>
           <TextContent>
             <TextBox>
               <SmallText name>예측</SmallText>
               <VeticalLine />
-              <Ionicons color={mainColor} name="caret-down-outline"></Ionicons>
-              <SmallText color={mainColor}>{info.prediction} %</SmallText>
+              {prediction < 0 ? (
+                <>
+                  <Ionicons color={mainColor} name="caret-down-outline" />
+                  <SmallText color={mainColor}>{prediction} %</SmallText>
+                </>
+              ) : (
+                <>
+                  <Ionicons color="#fa5e68" name="caret-up-outline" />
+                  <SmallText color="#fa5e68">{prediction} %</SmallText>
+                </>
+              )}
             </TextBox>
             <TextBox>
               <SmallText name>매매가</SmallText>
               <VeticalLine />
-              <SmallText>{info.sellingPrice}억</SmallText>
+              <SmallText>{sellingPrice}억</SmallText>
             </TextBox>
             <TextBox>
               <SmallText name>전세가</SmallText>
               <VeticalLine />
-              <SmallText>{info.jeonsePrice}억</SmallText>
+              <SmallText>{jeonsePrice}억</SmallText>
             </TextBox>
           </TextContent>
           <GraphContent></GraphContent>
         </Content>
       </TextArea>
       <ImgArea>
-        {info.realImg === '' ? (
+        {realImg === '' ? (
           <DefaultImg
             source={imgArr[Math.floor(Math.random() * imgArr.length)]}
           />
         ) : (
-          <RealImg source={{uri: info.realImg}} />
+          <RealImg source={{uri: realImg}} />
         )}
       </ImgArea>
     </CardContainer>

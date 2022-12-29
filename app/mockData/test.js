@@ -248,6 +248,19 @@ const test = [
         'https://cdn.pixabay.com/photo/2017/09/28/13/26/sky-2795517__480.jpg',
     },
   },
+  {
+    id: 21,
+    name: '이온빌',
+    info: {
+      space: '115m²(35평)',
+      prediction: 3,
+      sellingPrice: 2.9,
+      jeonsePrice: 2.7,
+      graphImg: '',
+      realImg:
+        '',
+    },
+  },
 ];
 
 export default test;
