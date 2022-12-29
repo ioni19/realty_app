@@ -6,57 +6,237 @@
       "space": "118m²(36평)",
       "prediction": -10,
       "sellingPrice": 4.0,
-      "JeonsePrice": 4.8
+      "JeonsePrice": 4.8,
+      "graphImg": "",
+      "realImg": ""
     }
   },
   {
     "id": 2,
-    "name": "오산원동힐스테이트",
+    "name": "우림",
     "info": {
-      "space": "118m²(36평)",
-      "prediction": -10,
-      "sellingPrice": 4.0,
-      "JeonsePrice": 4.8
+      "space": "73m²(22평)",
+      "prediction": -13,
+      "sellingPrice": 1.9,
+      "JeonsePrice": 1.5,
+      "graphImg": "",
+      "realImg": ""
     }
   },
   {
     "id": 3,
-    "name": "오산원동힐스테이트",
+    "name": "갈곶피오레",
     "info": {
-      "space": "118m²(36평)",
-      "prediction": -10,
-      "sellingPrice": 4.0,
-      "JeonsePrice": 4.8
+      "space": "120m²(36평)",
+      "prediction": -12,
+      "sellingPrice": 3.6,
+      "JeonsePrice": 2.9,
+      "graphImg": "",
+      "realImg": ""
     }
   },
   {
     "id": 4,
-    "name": "오산원동힐스테이트",
+    "name": "원동두산, 동아",
     "info": {
-      "space": "118m²(36평)",
-      "prediction": -10,
-      "sellingPrice": 4.0,
-      "JeonsePrice": 4.8
+      "space": "110m²(33평)",
+      "prediction": -4,
+      "sellingPrice": 3.6,
+      "JeonsePrice": 2.0,
+      "graphImg": "",
+      "realImg": ""
     }
   },
   {
     "id": 5,
-    "name": "오산원동힐스테이트",
+    "name": "오산대동다숲",
     "info": {
-      "space": "118m²(36평)",
-      "prediction": -10,
-      "sellingPrice": 4.0,
-      "JeonsePrice": 4.8
+      "space": "83m²(25평)",
+      "prediction": -7,
+      "sellingPrice": 2.1,
+      "JeonsePrice": 1.7,
+      "graphImg": "",
+      "realImg": ""
     }
   },
   {
     "id": 6,
-    "name": "오산원동힐스테이트",
+    "name": "화성병점SK뷰",
     "info": {
-      "space": "118m²(36평)",
-      "prediction": -10,
-      "sellingPrice": 4.0,
-      "JeonsePrice": 4.8
+      "space": "156m²(47평)",
+      "prediction": -16,
+      "sellingPrice": 5.1,
+      "JeonsePrice": 3.2,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 7,
+    "name": "미소지움",
+    "info": {
+      "space": "85m²(26평)",
+      "prediction": -6,
+      "sellingPrice": 3.7,
+      "JeonsePrice": 2.2,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 8,
+    "name": "이화",
+    "info": {
+      "space": "88m²(27평)",
+      "prediction": -8,
+      "sellingPrice": 1.1,
+      "JeonsePrice": 0.9,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 9,
+    "name": "동부삼환",
+    "info": {
+      "space": "77m²(23평)",
+      "prediction": -14,
+      "sellingPrice": 2.2,
+      "JeonsePrice": 1.9,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 10,
+    "name": "제일하이빌2차",
+    "info": {
+      "space": "96m²(29평)",
+      "prediction": -7,
+      "sellingPrice": 3.3,
+      "JeonsePrice": 1.7,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 11,
+    "name": "평택장당우미이노스빌 1차",
+    "info": {
+      "space": "115m²(35평)",
+      "prediction": -9,
+      "sellingPrice": 3.4,
+      "JeonsePrice": 2.1,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 12,
+    "name": "평택장당우미이노스빌 5차",
+    "info": {
+      "space": "108m²(33평)",
+      "prediction": -7,
+      "sellingPrice": 4.6,
+      "JeonsePrice": 3.8,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 13,
+    "name": "평택장당우미이노스빌 3차",
+    "info": {
+      "space": "172m²(52평)",
+      "prediction": -9,
+      "sellingPrice": 4.6,
+      "JeonsePrice": 3.8,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 14,
+    "name": "한일",
+    "info": {
+      "space": "81m²(24평)",
+      "prediction": -1,
+      "sellingPrice": 1.7,
+      "JeonsePrice": 2.0,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 15,
+    "name": "경기",
+    "info": {
+      "space": "81m²(24평)",
+      "prediction": -7,
+      "sellingPrice": 1.5,
+      "JeonsePrice": 0.8,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 16,
+    "name": "제이하이빌1차",
+    "info": {
+      "space": "93m²(28평)",
+      "prediction": -9,
+      "sellingPrice": 3.5,
+      "JeonsePrice": 2.7,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 17,
+    "name": "성지",
+    "info": {
+      "space": "65m²(20평)",
+      "prediction": -7,
+      "sellingPrice": 0.7,
+      "JeonsePrice": 0.6,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 18,
+    "name": "우경싸이트빌",
+    "info": {
+      "space": "38m²(11평)",
+      "prediction": -6,
+      "sellingPrice": 0.8,
+      "JeonsePrice": 0.9,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 19,
+    "name": "평택장당우미이노스빌 2차",
+    "info": {
+      "space": "115m²(35평)",
+      "prediction": -11,
+      "sellingPrice": 3.6,
+      "JeonsePrice": 2.1,
+      "graphImg": "",
+      "realImg": ""
+    }
+  },
+  {
+    "id": 20,
+    "name": "삼익",
+    "info": {
+      "space": "84m²(26평)",
+      "prediction": -3,
+      "sellingPrice": 1.9,
+      "JeonsePrice": 1.7,
+      "graphImg": "",
+      "realImg": ""
     }
   }
 ]
