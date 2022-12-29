@@ -7,6 +7,7 @@ import Search from '../screens/Search';
 import My from '../screens/My';
 import Home from '../screens/Home';
 import mainColor from '../theme/theme';
+import Stack from './Stack';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +31,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="검색"
-        component={Search}
+        component={Stack}
         options={{
           tabBarIcon: ({color, size}) => (
             <Ionicons name={'search-sharp'} color={color} size={size} />

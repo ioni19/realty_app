@@ -4,10 +4,11 @@ import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import {mainColor} from '../theme/theme';
 import {imgArr} from '../mockData/defaultImg';
 
-const Card = ({data}) => {
-  const {id, name, info} = data;
+const Card = props => {
+  const {id, name, info} = props.data;
+  const navigateDetail = props.function;
   return (
-    <CardContainer>
+    <CardContainer activeOpacity={1} onPress={navigateDetail}>
       <TextArea>
         <Title>
           <Name>{name.length > 10 ? name.slice(0, 9) + `...` : name}</Name>
@@ -48,7 +49,7 @@ const Card = ({data}) => {
   );
 };
 
-const CardContainer = styled.View`
+const CardContainer = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
   width: 90%;

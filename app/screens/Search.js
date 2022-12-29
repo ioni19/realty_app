@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {View, Text, FlatList, ScrollView} from 'react-native';
+import {View, Text, FlatList, ScrollView, TouchableOpacity} from 'react-native';
 import Card from '../components/Card';
 import SearchBar from '../components/SearchBar';
 import test from '../mockData/test';
 
-const Search = () => {
+const Search = ({navigation: {navigate}}) => {
+  const navigateDetail = () => {
+    navigate('상세정보');
+  };
   return (
     <SafeView>
       <>
@@ -15,9 +18,10 @@ const Search = () => {
           keyExtractor={item => item.id}
           alwaysBounceVertical={false}
           bounces={false}
-          renderItem={({item}) => <Card data={item} />}
+          renderItem={({item}) => (
+            <Card function={navigateDetail} data={item} />
+          )}
         />
-        <View></View>
       </>
     </SafeView>
   );
