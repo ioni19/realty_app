@@ -6,13 +6,14 @@ import Prescription from '../screens/Prescription';
 import Search from '../screens/Search';
 import My from '../screens/My';
 import Home from '../screens/Home';
-import {mainColor} from '../theme/color';
+import mainColor from '../theme/theme';
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
   return (
     <Tab.Navigator
+      initialRouteName="검색"
       screenOptions={{
         tabBarActiveTintColor: mainColor,
         tabBarInactiveTintColor: '#c3c3c3',
