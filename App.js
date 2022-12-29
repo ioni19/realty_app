@@ -10,11 +10,11 @@ import DetailInfo from './app/screens/DetailInfo';
 const App = () => {
   return (
     <>
-      <DetailInfo />
-      {/* <NavigationContainer> */}
-        {/* <Tabs /> */}
+      {/* <DetailInfo /> */}
+      <NavigationContainer>
+        <Tabs />
         {/* <Stack /> */}
-      {/* </NavigationContainer> */}
+      </NavigationContainer>
     </>
   );
 };
