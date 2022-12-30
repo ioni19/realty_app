@@ -6,21 +6,19 @@ import SearchBar from '../components/SearchBar';
 import test from '../mockData/test';
 
 const Search = ({navigation: {navigate}}) => {
-  const navigateDetail = () => {
-    navigate('Stack', {screen: "상세정보"});
+  const goToDetail = () => {
+    navigate('Stack', {screen: '상세정보'});
   };
   return (
     <SafeView>
       <>
         <SearchBar />
-        <ScrollList
+        <CardList
           data={test}
           keyExtractor={item => item.id}
           alwaysBounceVertical={false}
           bounces={false}
-          renderItem={({item}) => (
-            <Card function={navigateDetail} data={item} />
-          )}
+          renderItem={({item}) => <Card function={goToDetail} data={item} />}
         />
       </>
     </SafeView>
@@ -33,7 +31,7 @@ const SafeView = styled.SafeAreaView`
   height: 10px;
 `;
 
-const ScrollList = styled.FlatList`
+const CardList = styled.FlatList`
   padding-top: 10px;
   background-color: #f6f7fb;
 `;

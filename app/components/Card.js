@@ -8,9 +8,9 @@ const Card = props => {
   const {id, name, info} = props.data;
   const {space, prediction, sellingPrice, jeonsePrice, realImg} = info;
 
-  const navigateDetail = props.function;
+  const goToDetail = props.function;
   return (
-    <CardContainer activeOpacity={1} onPress={navigateDetail}>
+    <CardContainer activeOpacity={1} onPress={goToDetail}>
       <TextArea>
         <Title>
           <Name>{name.length > 10 ? name.slice(0, 9) + `...` : name}</Name>
