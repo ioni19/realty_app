@@ -57,11 +57,12 @@ const SortFilterContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   width: 90%;
-  margin: 8px auto 0;
+  margin: 0 auto;
 `;
 
 const SortBox = styled.View`
   flex-direction: row;
+  margin-top: 8px;
 `;
 
 const SmallText = styled.Text`

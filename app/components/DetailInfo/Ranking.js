@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 
 const Ranking = () => {
   return (
-    <View style={{height: 110, backgroundColor: 'white'}}>
+    <View style={{height: 110, backgroundColor: 'white', marginBottom: 15}}>
       <Container>
         <RankContainer>
           <SmallText>37위</SmallText>
@@ -49,8 +49,7 @@ const Container = styled.View`
   justify-content: space-between;
   width: 90%;
   height: 100%;
-  margin: 0 auto 10px;
-  background-color: white;
+  margin: 0 auto;
 `;
 
 const RankContainer = styled.View`
@@ -73,6 +72,7 @@ const MyRank = styled.View`
   height: 45px;
   width: 100%;
   padding: 0 8px;
+  margin: 3px 0;
   border-radius: 4px;
   background-color: ${mainColor};
 `;
@@ -83,6 +83,7 @@ const NameContainer = styled.View`
 `;
 
 const NameWrapper = styled.TouchableOpacity.attrs({activeOpacity: 1})``;
+
 const NameText = styled.Text`
   margin: 2px 0;
   color: ${props => (props.myRank ? 'black' : 'rgba(0,0,0,0.3)')};
