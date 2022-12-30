@@ -20,9 +20,9 @@ const SearchBar = () => {
       <SortFilterContainer>
         <SortBox>
           <SmallText>수익순</SmallText>
-          <VeticalLine />
+          <VerticalLine />
           <SmallText>가격순</SmallText>
-          <VeticalLine />
+          <VerticalLine />
           <SmallText>인기순</SmallText>
         </SortBox>
         <FilterBtn activeOpacity={1}>
@@ -71,7 +71,7 @@ const SmallText = styled.Text`
   font-weight: 600;
 `;
 
-const VeticalLine = styled.Text`
+const VerticalLine = styled.Text`
   margin: 0 7px;
   width: 1px;
   height: 60%;

@@ -8,10 +8,10 @@ import PriceInfo from './PriceInfo';
 
 const Container = ({constantData}) => {
   return (
-    <View style={{height: 110, backgroundColor: 'white', marginBottom: 15}}>
+    <View style={{backgroundColor: 'white', marginBottom: 15}}>
       <StyledContainer>
-        <Title>{constantData.title}</Title>
-        {constantData.title === '투자항목점수' && <ItemScore />}
+        <Title>{constantData.category}</Title>
+        {constantData.category === '투자항목점수' && <ItemScore />}
       </StyledContainer>
     </View>
   );
@@ -19,10 +19,11 @@ const Container = ({constantData}) => {
 
 const StyledContainer = styled.View`
   width: 90%;
-  margin: 30px auto;
+  margin: 35px auto;
 `;
 
 const Title = styled.Text`
+  margin-bottom: 30px;
   font-size: 21px;
   font-weight: 600;
 `;

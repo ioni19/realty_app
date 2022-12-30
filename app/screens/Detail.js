@@ -4,17 +4,13 @@ import Container from '../components/Detail/Container';
 import Ranking from '../components/Detail/Ranking';
 import ConstantData from '../constantData/detailConstantData';
 
-const Detail = ({
-  route: {
-    params: {name},
-  },
-}) => {
+const Detail = () => {
   return (
     // <View style={{backgroundColor: '#f6f7fb', flex: 1}}>
     //   {/*나중에 지워야함*/}
     <>
       <ScrollView>
-        <Ranking name={name} />
+        <Ranking />
         <Container constantData={ConstantData.ItemScore} />
         <Container constantData={ConstantData.PriceInfo} />
         <Container constantData={ConstantData.SlaeInfo} />

@@ -11,7 +11,7 @@ const Card = ({data}) => {
 
   const navigation = useNavigation();
   const goToDetail = () => {
-    navigation.navigate('Stack', {screen: '상세정보', params: {name}});
+    navigation.navigate('Stack', {screen: '상세정보'});
   };
   return (
     <CardContainer activeOpacity={1} onPress={goToDetail}>
@@ -24,7 +24,7 @@ const Card = ({data}) => {
           <TextContent>
             <TextBox>
               <SmallText name>예측</SmallText>
-              <VeticalLine />
+              <VerticalLine />
               {prediction < 0 ? (
                 <>
                   <Ionicons color={mainColor} name="caret-down-outline" />
@@ -39,12 +39,12 @@ const Card = ({data}) => {
             </TextBox>
             <TextBox>
               <SmallText name>매매가</SmallText>
-              <VeticalLine />
+              <VerticalLine />
               <SmallText>{sellingPrice}억</SmallText>
             </TextBox>
             <TextBox>
               <SmallText name>전세가</SmallText>
-              <VeticalLine />
+              <VerticalLine />
               <SmallText>{jeonsePrice}억</SmallText>
             </TextBox>
           </TextContent>
@@ -108,7 +108,7 @@ const TextBox = styled.View`
   margin-top: 6px;
 `;
 
-const VeticalLine = styled(SmallText)`
+const VerticalLine = styled(SmallText)`
   width: 1px;
   height: 80%;
   background-color: rgba(0, 0, 0, 0.2);
