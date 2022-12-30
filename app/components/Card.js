@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import {mainColor} from '../theme/theme';
 import {imgArr} from '../mockData/defaultImg';
 
-const Card = props => {
-  const {id, name, info} = props.data;
+const Card = ({data}) => {
+  const {id, name, info} = data;
   const {space, prediction, sellingPrice, jeonsePrice, realImg} = info;
 
-  const goToDetail = props.function;
+  const navigation = useNavigation();
+  const goToDetail = () => {
+    navigation.navigate('Stack', {screen: '상세정보', params: {name}});
+  };
   return (
     <CardContainer activeOpacity={1} onPress={goToDetail}>
       <TextArea>

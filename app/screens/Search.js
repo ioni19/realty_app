@@ -5,10 +5,7 @@ import Card from '../components/Card';
 import SearchBar from '../components/SearchBar';
 import test from '../mockData/test';
 
-const Search = ({navigation: {navigate}}) => {
-  const goToDetail = () => {
-    navigate('Stack', {screen: '상세정보'});
-  };
+const Search = () => {
   return (
     <SafeView>
       <>
@@ -18,7 +15,7 @@ const Search = ({navigation: {navigate}}) => {
           keyExtractor={item => item.id}
           alwaysBounceVertical={false}
           bounces={false}
-          renderItem={({item}) => <Card function={goToDetail} data={item} />}
+          renderItem={({item}) => <Card data={item} />}
         />
       </>
     </SafeView>
