@@ -4,13 +4,14 @@ import {NavigationContainer, ThemeProvider} from '@react-navigation/native';
 import Detail from './app/screens/Detail';
 import Root from './app/navigators/Root';
 import {View} from 'react-native';
+import {bgColor} from './app/theme/theme';
 
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <>
-      <View style={{backgroundColor: '#f6f7fb'}}>
+      <View style={{backgroundColor: bgColor}}>
         <Detail />
       </View>
 

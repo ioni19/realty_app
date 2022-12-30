@@ -1,8 +1,10 @@
 import React from 'react';
+import styled from 'styled-components/native';
 import {Text} from 'react-native';
+import TextToggle from './TextToggle';
 
 const PriceInfo = () => {
-  return <Text>가격</Text>;
+  return <TextToggle />;
 };
 
 export default PriceInfo;

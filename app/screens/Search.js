@@ -4,6 +4,7 @@ import {View, Text, FlatList, ScrollView, TouchableOpacity} from 'react-native';
 import Card from '../components/Card';
 import SearchBar from '../components/SearchBar';
 import test from '../mockData/test';
+import {bgColor} from '../theme/theme';
 
 const Search = () => {
   return (
@@ -30,7 +31,7 @@ const SafeView = styled.SafeAreaView`
 
 const CardList = styled.FlatList`
   padding-top: 10px;
-  background-color: #f6f7fb;
+  background-color: ${bgColor};
 `;
 
 export default Search;

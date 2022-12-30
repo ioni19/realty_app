@@ -12,6 +12,7 @@ const Container = ({constantData}) => {
       <StyledContainer>
         <Title>{constantData.category}</Title>
         {constantData.category === '투자항목점수' && <ItemScore />}
+        {constantData.category === '실거래가 정보' && <PriceInfo />}
       </StyledContainer>
     </View>
   );
