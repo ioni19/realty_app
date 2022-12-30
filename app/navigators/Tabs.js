@@ -31,7 +31,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="검색"
-        component={Stack}
+        component={Search}
         options={{
           tabBarIcon: ({color, size}) => (
             <Ionicons name={'search-sharp'} color={color} size={size} />

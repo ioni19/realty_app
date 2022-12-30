@@ -6,16 +6,14 @@ import {StyleSheet} from 'react-native';
 import Tabs from './app/navigators/Tabs';
 import Stack from './app/navigators/Stack';
 import DetailInfo from './app/screens/DetailInfo';
+import Root from './app/navigators/Root';
 
 const App = () => {
   return (
-    <>
-      {/* <DetailInfo /> */}
-      <NavigationContainer>
-        <Tabs />
-        {/* <Stack /> */}
-      </NavigationContainer>
-    </>
+    // {/* <DetailInfo /> */}
+    <NavigationContainer>
+      <Root />
+    </NavigationContainer>
   );
 };
 

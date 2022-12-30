@@ -9,15 +9,8 @@ const NativeStack = createNativeStackNavigator();
 const Stack = () => (
   <NativeStack.Navigator
     screenOptions={{
-      headerBackTitleVisible: false,
-      headerTintColor: 'black',
-      headerStyle: {height: 200},
+      headerShown: false,
     }}>
-    <NativeStack.Screen
-      name="카드리스트"
-      component={Search}
-      options={{headerShown: false}}
-    />
     <NativeStack.Screen name="상세정보" component={DetailInfo} />
   </NativeStack.Navigator>
 );

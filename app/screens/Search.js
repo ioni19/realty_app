@@ -7,7 +7,7 @@ import test from '../mockData/test';
 
 const Search = ({navigation: {navigate}}) => {
   const navigateDetail = () => {
-    navigate('상세정보');
+    navigate('Stack', {screen: "상세정보"});
   };
   return (
     <SafeView>
