@@ -1,18 +1,26 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/native';
 import {StyleSheet} from 'react-native';
 import {bgColor} from '../../theme/theme';
 
-
-const TextToggle = ({data}) => {
+const TextToggle = ({data, setPick}) => {
   const [pickValue, setPickValue] = useState(data.text[0]);
-
+  // useEffect(() => {
+  //   if (pickValue === '매매') {
+  //     setTest(true);
+  //   } else setTest(false);
+  // }, [pickValue]);
+  // console.log(data);
+  const testFucntion = text => {
+    setPickValue(text);
+    setPick(pickValue);
+  };
   return (
     <Container>
       {data.text.map((text, idx) => (
         <ToggleBtn
           key={idx}
-          onPress={() => setPickValue(text)}
+          onPress={() => testFucntion(text)}
           pick={pickValue === text ? true : false}
           style={pickValue === text && styles.shadow}
           height={data.height}
@@ -31,9 +39,11 @@ const TextToggle = ({data}) => {
 const Container = styled.View`
   background-color: ${bgColor};
   flex-direction: row;
+  margin: 30px 0;
   padding: 4px;
   width: 100%;
   border-radius: 50px;
+
 `;
 
 const ToggleBtn = styled.TouchableOpacity`

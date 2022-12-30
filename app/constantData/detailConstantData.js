@@ -1,6 +1,6 @@
 const ItemScore = {
   name: 'ItemScore',
-  category: '투자항목점수',
+  category: '투자 항목 점수',
 };
 
 const PriceInfo = {

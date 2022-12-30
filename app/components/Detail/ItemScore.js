@@ -14,6 +14,6 @@ const ItemScore = () => {
 };
 
 const Container = styled.View`
-  padding: 0 15px;
+  padding: 30px 15px 0;
 `;
 export default ItemScore;
