@@ -1,19 +1,19 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-
+import {QueryClient, QueryClientProvider} from 'react-query';
 import {NavigationContainer, ThemeProvider} from '@react-navigation/native';
-import {StyleSheet} from 'react-native';
-import Tabs from './app/navigators/Tabs';
-import Stack from './app/navigators/Stack';
-import DetailInfo from './app/screens/DetailInfo';
+import Detail from './app/screens/Detail';
 import Root from './app/navigators/Root';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    // {/* <DetailInfo /> */}
-    <NavigationContainer>
-      <Root />
-    </NavigationContainer>
+    // {/* <Detail /> */}
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <Root />
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 };
 

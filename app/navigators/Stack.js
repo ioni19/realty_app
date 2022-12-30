@@ -1,6 +1,6 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import DetailInfo from '../screens/DetailInfo';
+import Detail from '../screens/Detail';
 import Search from '../screens/Search';
 import Card from '../components/Card';
 
@@ -11,7 +11,7 @@ const Stack = () => (
     screenOptions={{
       headerShown: false,
     }}>
-    <NativeStack.Screen name="상세정보" component={DetailInfo} />
+    <NativeStack.Screen name="상세정보" component={Detail} />
   </NativeStack.Navigator>
 );
 

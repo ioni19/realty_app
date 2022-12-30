@@ -6,7 +6,7 @@ import fullLove from '../../../assets/images/bluelove.png';
 import {mainColor} from '../../theme/theme';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 
-const Ranking = () => {
+const Ranking = ({name}) => {
   return (
     <View style={{height: 110, backgroundColor: 'white', marginBottom: 15}}>
       <Container>
@@ -30,7 +30,7 @@ const Ranking = () => {
             <NameText>오산롯데캐슬스카이파크</NameText>
           </NameWrapper>
           <NameWrapper>
-            <NameText myRank>오산원동힐스테이트</NameText>
+            <NameText myRank>{name}</NameText>
           </NameWrapper>
           <NameWrapper>
             <NameText>이림</NameText>
