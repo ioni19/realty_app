@@ -1,39 +1,6 @@
-// import React, {useState} from 'react';
-// import styled from 'styled-components/native';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-// import {Alert, SafeAreaView, StyleSheet, Button, Platform} from 'react-native';
-// import {NaverLogin, getProfile} from '@react-native-seoul/naver-login';
-
-// const storeData = async value => {
-//   try {
-//     await AsyncStorage.setItem('@storage_Key', value);
-//   } catch (e) {
-//     // saving error
-//   }
-// };
-
-// storeData('바보');
-
-// const getData = async () => {
-//   try {
-//     const value = await AsyncStorage.getItem('@storage_Key');
-//     console.log(value);
-//     if (value !== null) {
-//       // value previously stored
-//     }
-//   } catch (e) {
-//     // error reading value
-//   }
-// };
-
-// getData();
-
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView, Button, View, Text, ScrollView} from 'react-native';
-import NaverLogin, {
-  NaverLoginResponse,
-  GetProfileResponse,
-} from '@react-native-seoul/naver-login';
+import NaverLogin, {NaverLoginResponse} from '@react-native-seoul/naver-login';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const consumerKey = 'dSRuls9mwd8mLC5grvGa';
@@ -63,7 +30,6 @@ const getData = async () => {
 const Login = () => {
   const [success, setSuccessResponse] = useState();
   const [failure, setFailureResponse] = useState();
-  const [getProfileRes, setGetProfileRes] = useState();
 
   useEffect(() => {
     storeData(success);
@@ -85,20 +51,8 @@ const Login = () => {
       await NaverLogin.logout();
       setSuccessResponse(undefined);
       setFailureResponse(undefined);
-      setGetProfileRes(undefined);
     } catch (e) {
       console.error(e);
-    }
-  };
-
-  const getProfile = async () => {
-    try {
-      const profileResult = await NaverLogin.getProfile(
-        'AAAAOD9PW46lMIltnGD+pxOah+uaf0VC1OySEfRyG3evp4b1pkANxjBcXEENikA4wnGa3UCx7ZCFAwBpH3wuCo5BCIc=',
-      );
-      setGetProfileRes(profileResult);
-    } catch (e) {
-      setGetProfileRes(undefined);
     }
   };
 
@@ -107,7 +61,6 @@ const Login = () => {
       await NaverLogin.deleteToken();
       setSuccessResponse(undefined);
       setFailureResponse(undefined);
-      setGetProfileRes(undefined);
     } catch (e) {
       console.error(e);
     }
@@ -124,12 +77,6 @@ const Login = () => {
         <Button title={'Logout'} onPress={logout} />
         <Gap />
         {success ? (
-          <>
-            <Button title="Get Profile" onPress={getProfile} />
-            <Gap />
-          </>
-        ) : null}
-        {success ? (
           <View>
             <Button title="Delete Token" onPress={deleteToken} />
             <Gap />
@@ -139,9 +86,6 @@ const Login = () => {
         <Gap />
         {failure ? <ResponseJsonText name={'Failure'} json={failure} /> : null}
         <Gap />
-        {getProfileRes ? (
-          <ResponseJsonText name={'GetProfile'} json={getProfileRes} />
-        ) : null}
         <Button title={'storage'} onPress={getData} />
       </ScrollView>
     </SafeAreaView>

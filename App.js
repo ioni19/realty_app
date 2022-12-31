@@ -14,14 +14,14 @@ const App = () => {
     <>
       {/* <View style={{backgroundColor: bgColor}}> */}
         {/* <Detail /> */}
-        <Login />
+        {/* <Login /> */}
       {/* </View> */}
 
-      {/* <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
         <NavigationContainer>
           <Root />
         </NavigationContainer>
-      </QueryClientProvider> */}
+      </QueryClientProvider>
     </>
   );
 };

@@ -5,8 +5,13 @@ import emptyLove from '../../../assets/images/graylove.png';
 import fullLove from '../../../assets/images/bluelove.png';
 import {mainColor} from '../../theme/theme';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
+import {useNavigation} from '@react-navigation/native';
 
 const Ranking = ({name}) => {
+  const navigation = useNavigation();
+  const goToDetail = () => {
+    navigation.push('Stack', {screen: '상세정보'});
+  };
   return (
     <View style={{height: 110, backgroundColor: 'white', marginBottom: 15}}>
       <Container>
@@ -26,7 +31,7 @@ const Ranking = ({name}) => {
           <SmallText>39위</SmallText>
         </RankContainer>
         <NameContainer>
-          <NameWrapper>
+          <NameWrapper onPress={goToDetail}>
             <NameText>오산롯데캐슬스카이파크</NameText>
           </NameWrapper>
           <NameWrapper>
