@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-
+#import <NaverThirdPartyLogin/NaverThirdPartyLoginConnection.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -51,6 +51,10 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   } else {
     rootView.backgroundColor = [UIColor whiteColor];
   }
+  
+  if ([url.scheme isEqualToString:@"naverLogin"]) {
+  return [[NaverThirdPartyLoginConnection getSharedInstance] application:application openURL:url options:options];
+  }
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
@@ -59,6 +63,8 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   [self.window makeKeyAndVisible];
   return YES;
 }
+
+
 
 /// This method controls whether the `concurrentRoot`feature of React18 is turned on or off.
 ///
