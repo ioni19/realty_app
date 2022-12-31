@@ -5,6 +5,7 @@ import Card from '../Card';
 import Ranking from './Ranking';
 import ItemScore from './ItemScore';
 import PriceInfo from './PriceInfo';
+import InfoByField from './infoByField/InfoByField';
 
 const Container = ({constantData}) => {
   return (
@@ -13,6 +14,7 @@ const Container = ({constantData}) => {
         <Title>{constantData.category}</Title>
         {constantData.category === '투자 항목 점수' && <ItemScore />}
         {constantData.category === '실거래가 정보' && <PriceInfo />}
+        {constantData.category === '분야별 정보' && <InfoByField />}
       </StyledContainer>
     </View>
   );
