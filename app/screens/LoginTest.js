@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Button, View, Text, ScrollView, StyleSheet} from 'react-native';
+import {Button, View, Text, ScrollView, SafeAreaView} from 'react-native';
 import NaverLogin, {NaverLoginResponse} from '@react-native-seoul/naver-login';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styled from 'styled-components/native';
 import AutoSwiper from '../components/Swiper';
 import SocialLogin from '../components/SocialLogin';
+
+const consumerKey = 'dSRuls9mwd8mLC5grvGa';
+const consumerSecret = 'nluxPu14So';
+const appName = '부둥부둥';
+const serviceUrlScheme = 'naverLogin';
 
 const storeData = async value => {
   try {
@@ -25,7 +30,7 @@ const getData = async () => {
   }
 };
 
-const Login = () => {
+const LoginTest = () => {
   const [success, setSuccessResponse] = useState();
   const [failure, setFailureResponse] = useState();
 
@@ -65,36 +70,29 @@ const Login = () => {
   };
 
   return (
-    <SafeView>
-      <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
-        <AutoSwiper />
-        <SocialLogin />
+    <SafeAreaView
+      style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+      <ScrollView
+        style={{flex: 1}}
+        contentContainerStyle={{flexGrow: 1, padding: 24}}>
+        <Button title={'Login'} onPress={login} />
+        <Gap />
+        <Button title={'Logout'} onPress={logout} />
+        <Gap />
+        {success ? (
+          <View>
+            <Button title="Delete Token" onPress={deleteToken} />
+            <Gap />
+            <ResponseJsonText name={'Success'} json={success} />
+          </View>
+        ) : null}
+        <Gap />
+        {failure ? <ResponseJsonText name={'Failure'} json={failure} /> : null}
+        <Gap />
+        <Button title={'storage'} onPress={getData} />
       </ScrollView>
-    </SafeView>
+    </SafeAreaView>
   );
-
-  // <SafeAreaView
-  //   style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-  //   <ScrollView
-  //     style={{flex: 1}}
-  //     contentContainerStyle={{flexGrow: 1, padding: 24}}>
-  //     <Button title={'Login'} onPress={login} />
-  //     <Gap />
-  //     <Button title={'Logout'} onPress={logout} />
-  //     <Gap />
-  //     {success ? (
-  //       <View>
-  //         <Button title="Delete Token" onPress={deleteToken} />
-  //         <Gap />
-  //         <ResponseJsonText name={'Success'} json={success} />
-  //       </View>
-  //     ) : null}
-  //     <Gap />
-  //     {failure ? <ResponseJsonText name={'Failure'} json={failure} /> : null}
-  //     <Gap />
-  //     <Button title={'storage'} onPress={getData} />
-  //   </ScrollView>
-  // </SafeAreaView>
 };
 
 const Gap = () => <View style={{marginTop: 24}} />;
@@ -117,7 +115,6 @@ const ResponseJsonText = ({json = {}, name}) => (
 
 const SafeView = styled.SafeAreaView`
   flex: 1;
-  background-color: white;
 `;
 
-export default Login;
+export default LoginTest;

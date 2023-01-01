@@ -1,19 +1,94 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/native';
+import NaverLogin, {NaverLoginResponse} from '@react-native-seoul/naver-login';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import naverIcon from '../../assets/icons/naver.png';
 import kakaoIcon from '../../assets/icons/kakao.png';
+import {useNavigation} from '@react-navigation/native';
+
+const consumerKey = 'dSRuls9mwd8mLC5grvGa';
+const consumerSecret = 'nluxPu14So';
+const appName = '부둥부둥';
+const serviceUrlScheme = 'naverLogin';
+
 const SocialLogin = () => {
+  const navigation = useNavigation();
+  useEffect(() => {
+    console.log('성공', success);
+  }, [success]);
+
+  useEffect(() => {
+    console.log('실패', failure);
+  }, [failure]);
+
+  const [success, setSuccessResponse] = useState();
+  const [failure, setFailureResponse] = useState();
+
+  const login = async () => {
+    const {failureResponse, successResponse} = await NaverLogin.login({
+      appName,
+      consumerKey,
+      consumerSecret,
+      serviceUrlScheme,
+    });
+    setSuccessResponse(successResponse);
+    setFailureResponse(failureResponse);
+  };
+
+  const logout = async () => {
+    try {
+      await NaverLogin.logout();
+      setSuccessResponse(undefined);
+      setFailureResponse(undefined);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const storeData = async value => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('accessToken', jsonValue);
+    } catch (e) {}
+  };
+
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('accessToken');
+      // console.log(JSON.parse(jsonValue).accessToken);
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch (e) {}
+  };
+
+  const deleteToken = async () => {
+    try {
+      await NaverLogin.deleteToken();
+      setSuccessResponse(undefined);
+      setFailureResponse(undefined);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const signIn = () => {
+    login();
+    storeData();
+    if (success) {
+      navigation.navigate('Tabs');
+    }
+  };
+
   return (
     <Container>
-      <Btn color={'#03c75a'}>
+      <Btn onPress={signIn} color={'#03c75a'}>
         <Logo source={naverIcon}></Logo>
         <MdText>네이버 로그인</MdText>
       </Btn>
-      <Btn color={'#fee500'}>
+      <Btn onPress={deleteToken} color={'#fee500'}>
         <Logo kakao source={kakaoIcon}></Logo>
         <MdText kakao> 카카오톡 로그인</MdText>
       </Btn>
-      <Btn color={'black'}>
+      <Btn onPress={logout} color={'black'}>
         <MdText> Apple로 로그인</MdText>
       </Btn>
     </Container>
@@ -26,7 +101,7 @@ const Container = styled.View`
   width: 100%;
 `;
 
-const Btn = styled.View`
+const Btn = styled.TouchableOpacity.attrs({activeOpacity: 1})`
   justify-content: center;
   align-items: center;
   flex-direction: row;
