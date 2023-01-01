@@ -13,15 +13,15 @@ const App = () => {
   return (
     <>
       {/* <View style={{backgroundColor: bgColor}}> */}
-        {/* <Detail /> */}
-        {/* <Login /> */}
+      {/* <Detail /> */}
+      <Login />
       {/* </View> */}
 
-      <QueryClientProvider client={queryClient}>
+      {/* <QueryClientProvider client={queryClient}>
         <NavigationContainer>
           <Root />
         </NavigationContainer>
-      </QueryClientProvider>
+      </QueryClientProvider> */}
     </>
   );
 };

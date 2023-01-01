@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import {Text, TouchableOpacity, View, Image} from 'react-native';
-import emptyLove from '../../../assets/images/graylove.png';
-import fullLove from '../../../assets/images/bluelove.png';
+import emptyLove from '../../../assets/icons/graylove.png';
+import fullLove from '../../../assets/icons/bluelove.png';
 import {mainColor} from '../../theme/theme';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import {useNavigation} from '@react-navigation/native';
