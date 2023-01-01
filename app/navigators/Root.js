@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Stack from './Stack';
 import Tabs from './Tabs';
 import Login from '../screens/Login';
+import {useNavigation} from '@react-navigation/native';
 
 const Root = () => {
   const Nav = createNativeStackNavigator();
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    (async () => {
+      await AsyncStorage.getItem('accessToken').then(
+        jsonValue => jsonValue !== null && navigation.navigate('Tabs'),
+      );
+    })();
+  }, []);
+
   return (
     <Nav.Navigator>
       <Nav.Screen

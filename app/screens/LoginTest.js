@@ -13,7 +13,7 @@ const serviceUrlScheme = 'naverLogin';
 
 const storeData = async value => {
   try {
-    const jsonValue = JSON.stringify(value);
+    const jsonValue = JSON.stringify(value).accessToken;
     await AsyncStorage.setItem('accessToken', jsonValue);
   } catch (e) {
     // saving error
@@ -23,11 +23,20 @@ const storeData = async value => {
 const getData = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem('accessToken');
-    // console.log(JSON.parse(jsonValue).accessToken);
+    console.log(JSON.parse(jsonValue));
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     // error reading value
   }
+};
+
+const removeData = async () => {
+  try {
+    await AsyncStorage.removeItem('accessToken');
+  } catch (e) {
+    // error reading value
+  }
+  console.log('Done');
 };
 
 const LoginTest = () => {
@@ -90,6 +99,7 @@ const LoginTest = () => {
         {failure ? <ResponseJsonText name={'Failure'} json={failure} /> : null}
         <Gap />
         <Button title={'storage'} onPress={getData} />
+        <Button title={'storage 날리기'} onPress={removeData} />
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,31 +1,36 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {View, Text} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {View, Text, Button} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const My = () => {
-  const logout = async () => {
+  const navigation = useNavigation();
+
+  const removeData = async () => {
     try {
-      await NaverLogin.logout();
-      setSuccessResponse(undefined);
-      setFailureResponse(undefined);
+      await AsyncStorage.removeItem('accessToken');
     } catch (e) {
-      console.error(e);
+      console.log(e);
+      // error reading value
     }
+
+    navigation.replace('로그인');
   };
-  
+
   return (
     <SafeView>
       <View>
         <Text></Text>
       </View>
-      <Button onPress={logout}>로그아웃</Button>
+      <Button onPress={removeData} title={'로그아웃'} />
     </SafeView>
   );
 };
 
 const SafeView = styled.SafeAreaView`
   background-color: white;
-  height: 10px;
+  flex: 1;
 `;
 
 export default My;
