@@ -16,12 +16,13 @@ const AutoSwiper = () => {
       }}
       activeDotStyle={{
         backgroundColor: mainColor,
-        width: 30,
+        width: 25,
         height: 8,
         borderRadius: 4,
       }}
       loop={true}
-      autoplay={true}>
+      autoplay={true}
+      autoplayTimeout={1.5}>
       <Slide>
         <RowText>내 상황에 맞는</RowText>
         <RowText>
@@ -70,7 +71,7 @@ const Slide = styled.View`
 
 const RowText = styled.Text`
   text-align: center;
-  flex-direction: row;
+  margin-bottom: 10px;
   font-size: 28px;
   font-weight: 300;
 `;
