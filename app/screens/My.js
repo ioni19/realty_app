@@ -14,7 +14,6 @@ const My = () => {
       console.log(e);
       // error reading value
     }
-
     navigation.replace('로그인');
   };
 

@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import {View, Text} from 'react-native';
 import TextToggle from './TextToggle';
 import {bgColor, mainColor} from '../../theme/theme';
+import {StyledContainer, SectionTitle, HLine} from '../../screens/Detail';
 
 const kind = {text: ['매매', '전/월세'], fontSize: 17, height: 40};
 const period = {
@@ -16,7 +17,8 @@ const PriceInfo = () => {
   const [pickPeriod, setpickPeriod] = useState('');
 
   return (
-    <>
+    <StyledContainer>
+      <SectionTitle>실거래가 정보</SectionTitle>
       <TextToggle data={kind} setPick={setPickKind} />
       <TextContainer>
         <Wrapper>
@@ -29,7 +31,7 @@ const PriceInfo = () => {
       </TextContainer>
       <HLine />
       <TextToggle period data={period} setPick={setpickPeriod} />
-    </>
+    </StyledContainer>
   );
 };
 
@@ -54,14 +56,6 @@ const PriceText = styled.Text`
   color: ${mainColor};
   font-size: 30px;
   font-weight: 700;
-`;
-
-const HLine = styled.View`
-  position: static;
-  left: -30px;
-  width: 120%;
-  background-color: ${bgColor};
-  height: 3px;
 `;
 
 export default PriceInfo;

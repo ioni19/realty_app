@@ -5,8 +5,7 @@ import Detail from './app/screens/Detail';
 import Root from './app/navigators/Root';
 import {View} from 'react-native';
 import {bgColor} from './app/theme/theme';
-import Login from './app/screens/Login';
-import LoginTest from './app/screens/LoginTest';
+import Report from './app/components/Detail/Report';
 
 const queryClient = new QueryClient();
 
@@ -15,9 +14,8 @@ const App = () => {
     <>
       {/* <View style={{backgroundColor: bgColor}}> */}
       {/* <Detail /> */}
-      {/* <Login /> */}
-      {/* <LoginTest /> */}
       {/* </View> */}
+      {/* <Report /> */}
 
       <QueryClientProvider client={queryClient}>
         <NavigationContainer>

@@ -30,6 +30,17 @@ const SocialLogin = () => {
     setSuccessResponse(successResponse);
   };
 
+  // const logout = async () => {
+  //   try {
+  //     await NaverLogin.logout();
+  //     setSuccessResponse(undefined);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
+  // logout(); //옵션
+
   const storeData = async value => {
     try {
       const jsonValue = JSON.stringify(value);
