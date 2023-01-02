@@ -1,7 +1,8 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {StyleSheet, View} from 'react-native';
 import styled from 'styled-components/native';
-import {Rating, AirbnbRating} from 'react-native-ratings';
+import {AirbnbRating} from 'react-native-ratings';
 import {StyledContainer, SectionTitle} from '../../screens/Detail';
 import {bgColor} from '../../theme/theme';
 import {imgArr} from '../../mockData/basicImg';
@@ -13,6 +14,8 @@ const RecHouse = () => {
   };
 
   return (
+
+
     <>
       <StyledContainer>
         <SectionTitle>부동부동 추천 집</SectionTitle>
@@ -47,9 +50,10 @@ const RecHouse = () => {
 };
 
 const RecHouseCard = ({data}) => {
+  const navigation = useNavigation();
   const {name, info} = data;
   return (
-    <Card style={styles.shadow}>
+    <Card onPress={()=> navigation.push('Stack', {screen: '상세정보'})} style={styles.shadow}>
       <ImgBox>
         {info.realImg !== '' ? (
           <RealImg source={{uri: info.realImg}} />
@@ -100,7 +104,7 @@ const LightText = styled.Text`
   font-weight: 400;
 `;
 
-const Card = styled.View`
+const Card = styled.TouchableOpacity.attrs({activeOpacity: 1})`
   margin: 0 15px 5px 20px;
   height: 240px;
   width: 310px;
