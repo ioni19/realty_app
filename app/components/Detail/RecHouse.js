@@ -14,8 +14,6 @@ const RecHouse = () => {
   };
 
   return (
-
-
     <>
       <StyledContainer>
         <SectionTitle>부동부동 추천 집</SectionTitle>
@@ -65,8 +63,7 @@ const RecHouseCard = ({data}) => {
       </ImgBox>
       <TextBox>
         <SmallText>
-          <Name>{name}</Name> 매매 {info.sellingPrice}억원 전세
-          {info.jeonsePrice}억원
+          <Name>{name}</Name> 매매 {info.sellingPrice}억원 전세 {info.jeonsePrice}억원
         </SmallText>
         <SmallText>
           {info.adress} | {info.pyeong}평
