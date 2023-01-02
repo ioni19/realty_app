@@ -3,12 +3,21 @@ import {View} from "react-native";
 import styled from "styled-components/native";
 import {StyledContainer} from "../../screens/Detail";
 import {mainColor} from "../../theme/theme";
+import Ionicons from "react-native-vector-icons/dist/Ionicons";
+import {HeartIcon} from "../../screens/Detail";
 
-const BottomBtn = ({pick, setPick}) => {
+const BottomBtn = ({pick, colorChange}) => {
   return (
     <StyledContainer style={{paddingBottom: 20}}>
       <FlexRow>
-        <WhiteBtn onPress={() => setPick(pick => !pick)}>
+        <WhiteBtn onPress={colorChange}>
+          <HeartIcon as={View} style={{width: 40, height: 40, marginRight: 10}}>
+            <Ionicons
+              name='heart-sharp'
+              color={pick ? mainColor : "rgba(0,0,0,0.2)"}
+              size={22}
+            />
+          </HeartIcon>
           <BoldText pick={pick}>찜하기</BoldText>
         </WhiteBtn>
         <WhiteBtn>
@@ -35,10 +44,11 @@ const FlexRow = styled.View`
 `;
 
 const WhiteBtn = styled.TouchableOpacity.attrs({activeOpacity: 1})`
-  width: 49%;
-  height: 60px;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
+  width: 49%;
+  height: 60px;
   border: 1.2px solid ${mainColor};
   border-radius: 10px;
 `;

@@ -1,25 +1,24 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {Text, TouchableOpacity, View, Image} from 'react-native';
-import emptyLove from '../../../assets/icons/graylove.png';
-import fullLove from '../../../assets/icons/bluelove.png';
-import {mainColor} from '../../theme/theme';
-import Ionicons from 'react-native-vector-icons/dist/Ionicons';
-import {useNavigation} from '@react-navigation/native';
+import React from "react";
+import styled from "styled-components/native";
+import {Text, TouchableOpacity, View, Image} from "react-native";
+import {mainColor} from "../../theme/theme";
+import Ionicons from "react-native-vector-icons/dist/Ionicons";
+import {useNavigation} from "@react-navigation/native";
+import {HeartIcon} from "../../screens/Detail";
 
-const Ranking = ({name}) => {
+const Ranking = ({name, pick, colorChange}) => {
   const navigation = useNavigation();
   const goToDetail = () => {
-    navigation.push('Stack', {screen: '상세정보'});
+    navigation.push("Stack", {screen: "상세정보"});
   };
   return (
-    <View style={{height: 110, backgroundColor: 'white', marginBottom: 15}}>
+    <View style={{height: 110, backgroundColor: "white", marginBottom: 15}}>
       <Container>
         <RankContainer>
           <SmallText>37위</SmallText>
           <View>
             <MyRank>
-              <Ionicons name="stats-chart" color="white" size={28}></Ionicons>
+              <Ionicons name='stats-chart' color='white' size={28}></Ionicons>
               <View>
                 <SmallText myRank>순위</SmallText>
                 <SmallText myRank strong>
@@ -41,8 +40,12 @@ const Ranking = ({name}) => {
             <NameText>이림</NameText>
           </NameWrapper>
         </NameContainer>
-        <HeartIcon>
-          <Icon source={emptyLove}></Icon>
+        <HeartIcon onPress={colorChange}>
+          <Ionicons
+            name='heart-sharp'
+            color={pick ? mainColor : "rgba(0,0,0,0.2)"}
+            size={24}
+          />
         </HeartIcon>
       </Container>
     </View>
@@ -65,9 +68,9 @@ const RankContainer = styled.View`
 
 const SmallText = styled.Text`
   text-align: center;
-  color: ${props => (props.myRank ? 'white' : 'rgba(0,0,0,0.3)')};
-  font-weight: ${props => (props.strong ? '700' : '400')};
-  font-size: ${props => (props.strong ? '15px' : '13px')};
+  color: ${props => (props.myRank ? "white" : "rgba(0,0,0,0.3)")};
+  font-weight: ${props => (props.strong ? "700" : "400")};
+  font-size: ${props => (props.strong ? "15px" : "13px")};
 `;
 
 const MyRank = styled.View`
@@ -91,18 +94,9 @@ const NameWrapper = styled.TouchableOpacity.attrs({activeOpacity: 1})``;
 
 const NameText = styled.Text`
   margin: 2px 0;
-  color: ${props => (props.myRank ? 'black' : 'rgba(0,0,0,0.3)')};
-  font-size: ${props => (props.myRank ? '26px' : '19px')};
-  font-weight: ${props => (props.myRank ? '700' : '400')};
+  color: ${props => (props.myRank ? "black" : "rgba(0,0,0,0.3)")};
+  font-size: ${props => (props.myRank ? "26px" : "19px")};
+  font-weight: ${props => (props.myRank ? "700" : "400")};
 `;
 
-const HeartIcon = styled.TouchableOpacity.attrs({activeOpacity: 1})`
-  justify-content: center;
-  width: 10%;
-`;
-
-const Icon = styled.Image`
-  width: 40px;
-  height: 40px;
-`;
 export default Ranking;

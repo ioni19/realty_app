@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {TouchableOpacity, Text, View, ScrollView} from "react-native";
 import styled from "styled-components/native";
 import BottomBtn from "../components/Detail/BottomBtn";
@@ -14,11 +14,14 @@ import {bgColor} from "../theme/theme";
 
 const Detail = () => {
   const [pick, setPick] = useState(false);
+  const colorChange = () => {
+    setPick(pick => !pick);
+  };
 
   return (
     <View style={{backgroundColor: "white", flex: 1}}>
       <ScrollView>
-        <Ranking pick={pick} setPick={setPick} />
+        <Ranking pick={pick} colorChange={colorChange} />
         <Gap />
         <ItemScore />
         <Gap />
@@ -32,7 +35,7 @@ const Detail = () => {
         <Gap />
         <Contact />
         <Gap />
-        <BottomBtn pick={pick} setPick={setPick} />
+        <BottomBtn pick={pick} colorChange={colorChange} />
       </ScrollView>
     </View>
   );
@@ -54,6 +57,16 @@ export const HLine = styled.View`
   width: 120%;
   background-color: ${bgColor};
   height: 3px;
+`;
+
+export const HeartIcon = styled.TouchableOpacity.attrs({activeOpacity: 1})`
+  width: 45px;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  margin: auto 0;
+  background-color: rgba(0, 0, 0, 0.03);
 `;
 
 const Gap = styled.View`

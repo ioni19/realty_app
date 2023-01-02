@@ -1,16 +1,18 @@
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import {StyleSheet, View} from 'react-native';
-import styled from 'styled-components/native';
-import {AirbnbRating} from 'react-native-ratings';
-import {StyledContainer, SectionTitle} from '../../screens/Detail';
-import {bgColor} from '../../theme/theme';
-import {imgArr} from '../../mockData/basicImg';
-import RecHouseData from '../../mockData/recHouseData';
+import React, {useState} from "react";
+import {useNavigation} from "@react-navigation/native";
+import {StyleSheet, View} from "react-native";
+import styled from "styled-components/native";
+import {AirbnbRating} from "react-native-ratings";
+import {StyledContainer, SectionTitle} from "../../screens/Detail";
+import {mainColor, bgColor} from "../../theme/theme";
+import {imgArr} from "../../mockData/basicImg";
+import RecHouseData from "../../mockData/recHouseData";
+import Ionicons from "react-native-vector-icons/dist/Ionicons";
+import {HeartIcon} from "../../screens/Detail";
 
 const RecHouse = () => {
   const ratingCompleted = rate => {
-    console.log('Rating is: ' + rate);
+    console.log("Rating is: " + rate);
   };
 
   return (
@@ -35,7 +37,7 @@ const RecHouse = () => {
           ratingContainerStyle={{
             height: 35,
             marginBottom: 20,
-            alignItems: 'center',
+            alignItems: "center",
           }}
         />
         <View style={{marginTop: 15}}>
@@ -50,10 +52,16 @@ const RecHouse = () => {
 const RecHouseCard = ({data}) => {
   const navigation = useNavigation();
   const {name, info} = data;
+  const [pick, setPick] = useState(false);
+  const colorChange = () => {
+    setPick(pick => !pick);
+  };
   return (
-    <Card onPress={()=> navigation.push('Stack', {screen: '상세정보'})} style={styles.shadow}>
+    <Card
+      onPress={() => navigation.push("Stack", {screen: "상세정보"})}
+      style={styles.shadow}>
       <ImgBox>
-        {info.realImg !== '' ? (
+        {info.realImg !== "" ? (
           <RealImg source={{uri: info.realImg}} />
         ) : (
           <BasicImg
@@ -62,13 +70,22 @@ const RecHouseCard = ({data}) => {
         )}
       </ImgBox>
       <TextBox>
-        <SmallText>
-          <Name>{name}</Name> 매매 {info.sellingPrice}억원 전세 {info.jeonsePrice}억원
-        </SmallText>
-        <SmallText>
-          {info.adress} | {info.pyeong}평
-        </SmallText>
-        <HeartIcon></HeartIcon>
+        <View>
+          <SmallText>
+            <Name>{name}</Name> 매매 {info.sellingPrice}억원 전세
+            {info.jeonsePrice}억원
+          </SmallText>
+          <SmallText>
+            {info.adress} | {info.pyeong}평
+          </SmallText>
+        </View>
+        <HeartIcon onPress={colorChange} style={{width: 40, height: 40}}>
+          <Ionicons
+            name='heart-sharp'
+            color={pick ? mainColor : "rgba(0,0,0,0.2)"}
+            size={24}
+          />
+        </HeartIcon>
       </TextBox>
     </Card>
   );
@@ -111,7 +128,7 @@ const Card = styled.TouchableOpacity.attrs({activeOpacity: 1})`
 
 const styles = StyleSheet.create({
   shadow: {
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 3,
@@ -146,6 +163,8 @@ const TextBox = styled.View.attrs({
   borderBottomRightRadius: 10,
   borderBottomLeftRadius: 10,
 })`
+  flex-direction: row;
+  justify-content: space-between;
   padding: 14px;
   height: 65px;
   background-color: white;
@@ -163,7 +182,5 @@ const SmallText = styled.Text`
   font-weight: 300;
   color: rgba(0, 0, 0, 0.5);
 `;
-
-const HeartIcon = styled.View``;
 
 export default RecHouse;
