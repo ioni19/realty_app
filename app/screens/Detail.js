@@ -10,6 +10,7 @@ import PriceInfo from "../components/Detail/PriceInfo";
 import Ranking from "../components/Detail/Ranking";
 import RecHouse from "../components/Detail/RecHouse";
 import Report from "../components/Detail/Report";
+import SaleInfo from "../components/Detail/SaleInfo";
 
 import {bgColor} from "../theme/theme";
 
@@ -23,19 +24,21 @@ const Detail = () => {
     <View style={{backgroundColor: "white", flex: 1}}>
       <ScrollView>
         {/* <Ranking pick={pick} colorChange={colorChange} />
-        <Gap /> */}
-        <ItemScore />
-        {/* <Gap /> */}
-        {/* <PriceInfo />
         <Gap />
-        <InfoByField /> */}
+        <ItemScore />
+        <Gap />
+        <PriceInfo />
+        <Gap /> */}
+        <SaleInfo />
+        <Gap />
+        <InfoByField />
         <Gap />
         <Report />
         <Gap />
         <BasicInfo />
-        <Gap />
-        <RecHouse />
         {/* <Gap />
+        <RecHouse />
+        <Gap />
         <Contact />
         <Gap />
         <BottomBtn pick={pick} colorChange={colorChange} /> */}
@@ -46,7 +49,7 @@ const Detail = () => {
 
 export const StyledContainer = styled.View`
   width: 90%;
-  margin: 35px auto; ;
+  margin: 35px auto;
 `;
 
 export const SectionTitle = styled.Text`

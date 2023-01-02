@@ -36,7 +36,7 @@ const FlexRow = styled.View`
 `;
 
 const SmallText = styled.Text`
-  width: ${props => props.name && "30%"};
+  width: ${props => (props.name ? "30%" : "70%")};
   color: ${props => (props.name ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.7)")};
 `;
 

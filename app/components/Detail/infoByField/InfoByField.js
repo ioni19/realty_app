@@ -6,7 +6,7 @@ import {StyledContainer, SectionTitle} from '../../../screens/Detail';
 const InfoByField = () => {
   return (
     <StyledContainer>
-      <SectionTitle>매물 정보</SectionTitle>
+      <SectionTitle>분야별 정보</SectionTitle>
       <RadarChart />
     </StyledContainer>
   );
