@@ -18,7 +18,7 @@ const Ranking = ({name, pick, colorChange}) => {
           <SmallText>37위</SmallText>
           <View>
             <MyRank>
-              <Ionicons name='stats-chart' color='white' size={28}></Ionicons>
+              <Ionicons name='stats-chart' color='white' size={28} />
               <View>
                 <SmallText myRank>순위</SmallText>
                 <SmallText myRank strong>

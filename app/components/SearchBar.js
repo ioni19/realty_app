@@ -1,20 +1,20 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {TextInput, Text} from 'react-native';
-import Ionicons from 'react-native-vector-icons/dist/Ionicons';
-import {SCREEN_HEIGHT} from '../theme/theme';
+import React from "react";
+import styled from "styled-components/native";
+import {TextInput, Text} from "react-native";
+import Ionicons from "react-native-vector-icons/dist/Ionicons";
+import {SCREEN_HEIGHT} from "../theme/theme";
 
 const SearchBar = () => {
   return (
     <Container>
       <SearchInputWrapper>
         <TextInput
-          placeholder="검색어를 입력해 주세요. [지역, 집 이름, 가격]"
-          returnKeyType="search"
-          style={{width: '90%'}}
+          placeholder='검색어를 입력해 주세요. [지역, 집 이름, 가격]'
+          returnKeyType='search'
+          style={{width: "90%"}}
         />
         <SearchBtn activeOpacity={1}>
-          <Ionicons name="search-outline" size={24} />
+          <Ionicons name='search-outline' size={24} />
         </SearchBtn>
       </SearchInputWrapper>
       <SortFilterContainer>
@@ -26,7 +26,7 @@ const SearchBar = () => {
           <SmallText>인기순</SmallText>
         </SortBox>
         <FilterBtn activeOpacity={1}>
-          <Ionicons name="funnel-outline" size={20}></Ionicons>
+          <Ionicons name='funnel-outline' size={20} />
         </FilterBtn>
       </SortFilterContainer>
     </Container>

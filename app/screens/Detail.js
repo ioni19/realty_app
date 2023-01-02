@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {TouchableOpacity, Text, View, ScrollView} from "react-native";
 import styled from "styled-components/native";
+import BasicInfo from "../components/Detail/BasicInfo";
 import BottomBtn from "../components/Detail/BottomBtn";
 import Contact from "../components/Detail/Contact";
 import InfoByField from "../components/Detail/infoByField/InfoByField";
@@ -21,21 +22,23 @@ const Detail = () => {
   return (
     <View style={{backgroundColor: "white", flex: 1}}>
       <ScrollView>
-        <Ranking pick={pick} colorChange={colorChange} />
-        <Gap />
+        {/* <Ranking pick={pick} colorChange={colorChange} />
+        <Gap /> */}
         <ItemScore />
+        {/* <Gap /> */}
+        {/* <PriceInfo />
         <Gap />
-        <PriceInfo />
-        <Gap />
-        <InfoByField />
+        <InfoByField /> */}
         <Gap />
         <Report />
         <Gap />
-        <RecHouse />
+        <BasicInfo />
         <Gap />
+        <RecHouse />
+        {/* <Gap />
         <Contact />
         <Gap />
-        <BottomBtn pick={pick} colorChange={colorChange} />
+        <BottomBtn pick={pick} colorChange={colorChange} /> */}
       </ScrollView>
     </View>
   );
