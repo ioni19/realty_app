@@ -1,0 +1,42 @@
+export const saleInfoData = [
+  {
+    id: 1,
+    floor: "104동 1층",
+    space: "110m²(33평)",
+    date: "22.12.27",
+    kind: "매매",
+    price: 4,
+  },
+  {
+    id: 2,
+    floor: "104동 2층",
+    space: "110m²(33평)",
+    date: "22.12.27",
+    kind: "매매",
+    price: 3.8,
+  },
+  {
+    id: 3,
+    floor: "102동 10층",
+    space: "110m²(33평)",
+    date: "22.12.27",
+    kind: "매매",
+    price: 4,
+  },
+  {
+    id: 4,
+    floor: "104동 5층",
+    space: "110m²(33평)",
+    date: "22.12.27",
+    kind: "매매",
+    price: 3.8,
+  },
+  {
+    id: 5,
+    floor: "104동 1층",
+    space: "110m²(33평)",
+    date: "22.12.26",
+    kind: "매매",
+    price: 3.4,
+  },
+];

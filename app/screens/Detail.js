@@ -23,19 +23,19 @@ const Detail = () => {
   return (
     <View style={{backgroundColor: "white", flex: 1}}>
       <ScrollView>
-        {/* <Ranking pick={pick} colorChange={colorChange} />
+        <Ranking pick={pick} colorChange={colorChange} />
         <Gap />
         <ItemScore />
         <Gap />
         <PriceInfo />
-        <Gap /> */}
+        <Gap />
         <SaleInfo />
         <Gap />
-        <InfoByField />
+        {/* <InfoByField />
         <Gap />
         <Report />
         <Gap />
-        <BasicInfo />
+        <BasicInfo /> */}
         {/* <Gap />
         <RecHouse />
         <Gap />
@@ -73,6 +73,18 @@ export const HeartIcon = styled.TouchableOpacity.attrs({activeOpacity: 1})`
   border-radius: 50px;
   margin: auto 0;
   background-color: rgba(0, 0, 0, 0.03);
+`;
+
+export const MoreBtn = styled.TouchableOpacity.attrs({activeOpacity: 1})`
+  width: 100%;
+  height: 55px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const MoreText = styled.Text`
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
 `;
 
 const Gap = styled.View`

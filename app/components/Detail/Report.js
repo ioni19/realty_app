@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {useNavigation} from '@react-navigation/native';
-import {mainColor} from '../../theme/theme';
-import reportData from '../../mockData/reportData';
-import {ScrollView, View} from 'react-native';
-import {SCREEN_WIDTH} from '../../theme/theme';
-import {SectionTitle, HLine} from '../../screens/Detail';
+import React from "react";
+import styled from "styled-components/native";
+import {useNavigation} from "@react-navigation/native";
+import {mainColor} from "../../theme/theme";
+import reportData from "../../mockData/reportData";
+import {ScrollView, View} from "react-native";
+import {SCREEN_WIDTH} from "../../theme/theme";
+import {SectionTitle, HLine, MoreBtn, MoreText} from "../../screens/Detail";
 
 const gap = 10;
 const offset = 10;
@@ -32,7 +32,7 @@ const Report = () => {
         keyExtractor={item => item.id}
         renderItem={({item}) => <ReportCard data={item} />}></HScrollList>
       <HLine />
-      <MoreBtn onPress={() => navaigation.navigate('Tabs', {screen: '레포트'})}>
+      <MoreBtn onPress={() => navaigation.navigate("Tabs", {screen: "레포트"})}>
         <MoreText>더 많은 컨텐츠 보러가기</MoreText>
       </MoreBtn>
     </>
@@ -80,7 +80,7 @@ const HScrollList = styled.FlatList.attrs({
   pagingEnabled: true,
   horizontal: true,
   bounces: false,
-  decelerationRate: 'fast',
+  decelerationRate: "fast",
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: {paddingHorizontal: offset + gap / 2},
   snapToInterval: pageWidth + gap,
@@ -132,18 +132,6 @@ const BottomLine = styled.View`
 const SubTitle = styled(MainTitle)`
   font-weight: 500;
   font-size: 22px;
-`;
-
-const MoreBtn = styled.TouchableOpacity.attrs({activeOpacity: 1})`
-  width: 100%;
-  height: 55px;
-  justify-content: center;
-  align-items: center;
-`;
-
-const MoreText = styled.Text`
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.7);
 `;
 
 export default Report;

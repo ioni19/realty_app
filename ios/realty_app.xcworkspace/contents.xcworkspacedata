@@ -19,6 +19,9 @@
       <FileRef
          location = "group:../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf">
       </FileRef>
+      <FileRef
+         location = "group:../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:realty_app.xcodeproj">
