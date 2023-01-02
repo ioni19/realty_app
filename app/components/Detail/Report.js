@@ -81,6 +81,7 @@ const HScrollList = styled.FlatList.attrs({
   horizontal: true,
   bounces: false,
   decelerationRate: 'fast',
+  showsHorizontalScrollIndicator: false,
   contentContainerStyle: {paddingHorizontal: offset + gap / 2},
   snapToInterval: pageWidth + gap,
 })`

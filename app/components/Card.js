@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import {mainColor} from '../theme/theme';
-import {imgArr} from '../mockData/defaultImg';
+import {imgArr} from '../mockData/basicImg';
 
 const Card = ({data}) => {
   const {id, name, info} = data;

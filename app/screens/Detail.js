@@ -5,6 +5,7 @@ import InfoByField from '../components/Detail/infoByField/InfoByField';
 import ItemScore from '../components/Detail/ItemScore';
 import PriceInfo from '../components/Detail/PriceInfo';
 import Ranking from '../components/Detail/Ranking';
+import RecHouse from '../components/Detail/RecHouse';
 import Report from '../components/Detail/Report';
 
 import {bgColor} from '../theme/theme';
@@ -13,15 +14,17 @@ const Detail = () => {
   return (
     <View style={{backgroundColor: 'white', flex: 1}}>
       <ScrollView>
-        {/* <Ranking />
+        <Ranking />
         <Gap />
         <ItemScore />
         <Gap />
         <PriceInfo />
         <Gap />
         <InfoByField />
-        <Gap /> */}
+        <Gap />
         <Report />
+        <Gap />
+        <RecHouse />
         <Gap />
       </ScrollView>
     </View>

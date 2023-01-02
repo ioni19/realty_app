@@ -51,6 +51,7 @@ const Tabs = () => {
         name="레포트"
         component={Report}
         options={{
+          gestureEnabled: false,
           tabBarIcon: ({color, size}) => (
             <Ionicons name={'newspaper-outline'} color={color} size={size} />
           ),
