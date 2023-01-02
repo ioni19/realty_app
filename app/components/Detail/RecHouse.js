@@ -51,7 +51,7 @@ const RecHouse = () => {
 
 const RecHouseCard = ({data}) => {
   const navigation = useNavigation();
-  const {name, info} = data;
+  const {id, name, info} = data;
   const [pick, setPick] = useState(false);
   const colorChange = () => {
     setPick(pick => !pick);
@@ -64,9 +64,7 @@ const RecHouseCard = ({data}) => {
         {info.realImg !== "" ? (
           <RealImg source={{uri: info.realImg}} />
         ) : (
-          <BasicImg
-            source={imgArr[Math.floor(Math.random() * imgArr.length)]}
-          />
+          <BasicImg source={imgArr[(id * imgArr.length) % 10]} />
         )}
       </ImgBox>
       <TextBox>

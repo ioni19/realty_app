@@ -7,7 +7,6 @@ import home6 from '../../assets/images/house5.png';
 import home7 from '../../assets/images/house6.png';
 import home8 from '../../assets/images/building.png';
 import home9 from '../../assets/images/building2.png';
-import home10 from '../../assets/images/apartment.png';
 
 export const imgArr = [
   home1,
@@ -19,5 +18,4 @@ export const imgArr = [
   home7,
   home8,
   home9,
-  home10,
 ];

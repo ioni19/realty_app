@@ -31,17 +31,17 @@ const Detail = () => {
         <Gap />
         <SaleInfo />
         <Gap />
-        {/* <InfoByField />
+        <InfoByField />
         <Gap />
         <Report />
         <Gap />
-        <BasicInfo /> */}
-        {/* <Gap />
+        <BasicInfo />
+        <Gap />
         <RecHouse />
         <Gap />
         <Contact />
         <Gap />
-        <BottomBtn pick={pick} colorChange={colorChange} /> */}
+        <BottomBtn pick={pick} colorChange={colorChange} />
       </ScrollView>
     </View>
   );

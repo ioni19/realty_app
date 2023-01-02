@@ -30,9 +30,9 @@ const SaleInfo = () => {
   return (
     <>
       <StyledContainer>
-        <SectionTitle>매물 정보</SectionTitle>
+        <SectionTitle style={{marginBottom: 10}}>매물 정보</SectionTitle>
         {resArr.map(item => (
-          <Card data={item} />
+          <Card key={item.id} data={item} />
         ))}
       </StyledContainer>
       <HLine />

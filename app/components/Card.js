@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {useNavigation} from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/dist/Ionicons';
-import {mainColor} from '../theme/theme';
-import {imgArr} from '../mockData/basicImg';
+import React from "react";
+import styled from "styled-components/native";
+import {useNavigation} from "@react-navigation/native";
+import Ionicons from "react-native-vector-icons/dist/Ionicons";
+import {mainColor} from "../theme/theme";
+import {imgArr} from "../mockData/basicImg";
 
 const Card = ({data}) => {
   const {id, name, info} = data;
@@ -11,14 +11,14 @@ const Card = ({data}) => {
 
   const navigation = useNavigation();
   const goToDetail = () => {
-    navigation.navigate('Stack', {screen: '상세정보'});
+    navigation.navigate("Stack", {screen: "상세정보"});
   };
   return (
     <CardContainer activeOpacity={1} onPress={goToDetail}>
       <TextArea>
         <Title>
           <Name>{name.length > 10 ? name.slice(0, 9) + `...` : name}</Name>
-          <SmallText color={'rgba(0, 0, 0, 0.7)'}>{space}</SmallText>
+          <SmallText color={"rgba(0, 0, 0, 0.7)"}>{space}</SmallText>
         </Title>
         <Content>
           <TextContent>
@@ -27,13 +27,13 @@ const Card = ({data}) => {
               <VerticalLine />
               {prediction < 0 ? (
                 <>
-                  <Ionicons color={mainColor} name="caret-down-outline" />
+                  <Ionicons color={mainColor} name='caret-down-outline' />
                   <SmallText color={mainColor}>{prediction} %</SmallText>
                 </>
               ) : (
                 <>
-                  <Ionicons color="#fa5e68" name="caret-up-outline" />
-                  <SmallText color="#fa5e68">{prediction} %</SmallText>
+                  <Ionicons color='#fa5e68' name='caret-up-outline' />
+                  <SmallText color='#fa5e68'>{prediction} %</SmallText>
                 </>
               )}
             </TextBox>
@@ -52,10 +52,8 @@ const Card = ({data}) => {
         </Content>
       </TextArea>
       <ImgArea>
-        {realImg === '' ? (
-          <DefaultImg
-            source={imgArr[Math.floor(Math.random() * imgArr.length)]}
-          />
+        {realImg === "" ? (
+          <DefaultImg source={imgArr[(id * imgArr.length) % 10]} />
         ) : (
           <RealImg source={{uri: realImg}} />
         )}
@@ -91,7 +89,7 @@ const SmallText = styled.Text`
   margin: 0 4px;
   font-size: 13px;
   font-weight: 300;
-  color: ${props => (props.name ? 'rgba(0,0,0,0.6)' : props.color)};
+  color: ${props => (props.name ? "rgba(0,0,0,0.6)" : props.color)};
 `;
 
 const Content = styled.View`
