@@ -1,20 +1,24 @@
-import React from 'react';
-import {TouchableOpacity, Text, View, ScrollView} from 'react-native';
-import styled from 'styled-components/native';
-import InfoByField from '../components/Detail/infoByField/InfoByField';
-import ItemScore from '../components/Detail/ItemScore';
-import PriceInfo from '../components/Detail/PriceInfo';
-import Ranking from '../components/Detail/Ranking';
-import RecHouse from '../components/Detail/RecHouse';
-import Report from '../components/Detail/Report';
+import React, { useState } from "react";
+import {TouchableOpacity, Text, View, ScrollView} from "react-native";
+import styled from "styled-components/native";
+import BottomBtn from "../components/Detail/BottomBtn";
+import Contact from "../components/Detail/Contact";
+import InfoByField from "../components/Detail/infoByField/InfoByField";
+import ItemScore from "../components/Detail/ItemScore";
+import PriceInfo from "../components/Detail/PriceInfo";
+import Ranking from "../components/Detail/Ranking";
+import RecHouse from "../components/Detail/RecHouse";
+import Report from "../components/Detail/Report";
 
-import {bgColor} from '../theme/theme';
+import {bgColor} from "../theme/theme";
 
 const Detail = () => {
+  const [pick, setPick] = useState(false);
+
   return (
-    <View style={{backgroundColor: 'white', flex: 1}}>
+    <View style={{backgroundColor: "white", flex: 1}}>
       <ScrollView>
-        <Ranking />
+        <Ranking pick={pick} setPick={setPick} />
         <Gap />
         <ItemScore />
         <Gap />
@@ -26,6 +30,9 @@ const Detail = () => {
         <Gap />
         <RecHouse />
         <Gap />
+        <Contact />
+        <Gap />
+        <BottomBtn pick={pick} setPick={setPick} />
       </ScrollView>
     </View>
   );
