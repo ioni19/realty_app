@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {forwardRef, useState} from "react";
 import styled from "styled-components/native";
 import Modal from "react-native-modal";
 import {View, Text, StyleSheet} from "react-native";
@@ -16,12 +16,17 @@ const period = {
   height: 30,
 };
 
-const PriceInfo = ({ref}) => {
+const PriceInfo = forwardRef((_, ref) => {
   const [pickKind, setPickKind] = useState("");
   const [pickPeriod, setpickPeriod] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [select, SetSelect] = useState(widthDataType[0].type);
-  console.log(select);
+  const [scrollToY, setScrollToY] = useState(0);
+  const handleScroll = () => {
+    ref.scrollTo({y: scrollToY - 35, animated: true});
+    // console.log("작동");
+  };
+  // console.log("이게머지", ref);
 
   return (
     <>
@@ -33,13 +38,19 @@ const PriceInfo = ({ref}) => {
         swipeThreshold={300}
         onSwipeComplete={() => setIsOpen(false)}>
         <SpaceSelectModal
+          handleScroll={handleScroll}
           data={widthDataType}
           setIsOpen={setIsOpen}
           setSelect={SetSelect}
           select={select}
         />
       </Modal>
-      <StyledContainer>
+      <StyledContainer
+        onLayout={e => {
+          const layout = e.nativeEvent.layout;
+          setScrollToY(layout.y);
+          console.log(layout);
+        }}>
         <FlexRow>
           <SectionTitle>실거래가 정보</SectionTitle>
           <SpaceSelectBtn onPress={() => setIsOpen(true)} style={styles.shadow}>
@@ -57,11 +68,12 @@ const PriceInfo = ({ref}) => {
           </Wrapper>
         </TextContainer>
         <HLine />
+        <Text onPress={handleScroll}>뉼러바</Text>
         <TextToggle period data={period} setPick={setpickPeriod} />
       </StyledContainer>
     </>
   );
-};
+});
 
 const FlexRow = styled.View`
   flex-direction: row;

@@ -1,6 +1,5 @@
 import React, {useRef, useState} from "react";
 import {TouchableOpacity, Text, View, ScrollView, Button} from "react-native";
-import {wrapScrollView, useScrollIntoView} from "react-native-scroll-into-view";
 import styled from "styled-components/native";
 import BasicInfo from "../components/Detail/BasicInfo";
 import BottomBtn from "../components/Detail/BottomBtn";
@@ -14,43 +13,45 @@ import Report from "../components/Detail/Report";
 import SaleInfo from "../components/Detail/SaleInfo";
 import {bgColor} from "../theme/theme";
 
-const CustomScrollView = wrapScrollView(ScrollView);
-
 const Detail = () => {
-  const priceRef = useRef();
-  console.log(priceRef);
   const [isLike, setIsLike] = useState(false);
+  const [scrollToY, setScrollToY] = useState(0);
+  const [scrollRef, setRef] = useState();
+  // const scrollRef = useRef();
+  // console.log("디테일ref", scrollRef);
+
   const colorChange = () => {
     setIsLike(isLike => !isLike);
   };
-  const scrollIntoView = useScrollIntoView();
-  const viewRef = useRef();
+
+  // const handleScroll = event => {
+  //   scrollRef.scrollTo({y: scrollToY + 35, animated: true});
+  // };
 
   return (
-    // <View style={{backgroundColor: "white", flex: 1}}>
-    <CustomScrollView ref={viewRef}>
-      <Text onPress={() => scrollIntoView(viewRef.current)}>스크롤 이동</Text>
-      <Ranking isLike={isLike} colorChange={colorChange} />
-      <Gap />
-      <ItemScore />
-      <Gap />
-      <PriceInfo />
-      <Gap />
-      <SaleInfo />
-      <Gap />
-      <InfoByField />
-      <Gap />
-      <Report />
-      <Gap />
-      <BasicInfo />
-      <Gap />
-      <RecHouse />
-      <Gap />
-      <Contact />
-      <Gap />
-      <BottomBtn isLike={isLike} colorChange={colorChange} />
-    </CustomScrollView>
-    // </View>
+    <View style={{backgroundColor: "white", flex: 1}}>
+      <ScrollView ref={ref => setRef(ref)}>
+        <Ranking isLike={isLike} colorChange={colorChange} />
+        <Gap />
+        <ItemScore />
+        <Gap />
+        <PriceInfo ref={scrollRef} />
+        <Gap />
+        <SaleInfo />
+        <Gap />
+        <InfoByField />
+        <Gap />
+        <Report />
+        <Gap />
+        <BasicInfo />
+        <Gap />
+        <RecHouse />
+        <Gap />
+        <Contact />
+        <Gap />
+        <BottomBtn isLike={isLike} colorChange={colorChange} />
+      </ScrollView>
+    </View>
   );
 };
 

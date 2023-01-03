@@ -4,25 +4,33 @@ import styled, {css} from "styled-components/native";
 import {SectionTitle} from "../../screens/Detail";
 import {mainColor} from "../../theme/theme";
 
-const SpaceSelectModal = ({data, setIsOpen, setSelect, select}) => {
+const SpaceSelectModal = ({
+  data,
+  setIsOpen,
+  setSelect,
+  select,
+  handleScroll,
+}) => {
+  const closeModal = () => {
+    handleScroll();
+    setIsOpen(false);
+  };
   return (
     <>
       <Container>
         <FlexRow>
-          <SectionTitle onPress={() => alert("설마")}>
-            아파트 평형 선택
-          </SectionTitle>
+          <SectionTitle>아파트 평형 선택</SectionTitle>
           <CloseBtn>
-            <CloseText onPress={() => setIsOpen(false)}>닫기</CloseText>
+            <CloseText onPress={closeModal}>닫기</CloseText>
           </CloseBtn>
         </FlexRow>
         {data.map(item => (
           <WidthType
             key={item.id}
             data={item}
-            setIsOpen={setIsOpen}
             setSelect={setSelect}
             select={select}
+            closeModal={closeModal}
           />
         ))}
       </Container>
@@ -30,7 +38,7 @@ const SpaceSelectModal = ({data, setIsOpen, setSelect, select}) => {
   );
 };
 
-const WidthType = ({data, setIsOpen, select, setSelect}) => {
+const WidthType = ({data, select, setSelect, closeModal}) => {
   const {
     households,
     type,
@@ -42,7 +50,7 @@ const WidthType = ({data, setIsOpen, select, setSelect}) => {
 
   const handleSelect = type => {
     setSelect(type);
-    setIsOpen(false);
+    closeModal();
   };
 
   return (
