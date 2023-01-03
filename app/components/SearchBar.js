@@ -34,7 +34,7 @@ const SearchBar = () => {
 };
 
 const Container = styled.View`
-  height: ${Math.floor(SCREEN_HEIGHT / 6.5)}px;
+  height: 130px;
   background-color: white;
 `;
 

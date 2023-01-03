@@ -12,7 +12,7 @@ const Ranking = ({name, isLike, colorChange}) => {
     navigation.push("Stack", {screen: "상세정보"});
   };
   return (
-    <View style={{height: 110, backgroundColor: "white", marginBottom: 15}}>
+    <View style={{height: 110, backgroundColor: "white"}}>
       <Container>
         <RankContainer>
           <SmallText>37위</SmallText>
