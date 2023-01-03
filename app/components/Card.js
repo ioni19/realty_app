@@ -18,7 +18,9 @@ const Card = ({data}) => {
       <TextArea>
         <Title>
           <Name>{name.length > 10 ? name.slice(0, 9) + `...` : name}</Name>
-          <SmallText color={"rgba(0, 0, 0, 0.7)"}>{space}</SmallText>
+          <SmallText margin={name.length > 10} color={"rgba(0, 0, 0, 0.7)"}>
+            {space}
+          </SmallText>
         </Title>
         <Content>
           <TextContent>
@@ -53,7 +55,7 @@ const Card = ({data}) => {
       </TextArea>
       <ImgArea>
         {realImg === "" ? (
-          <DefaultImg source={imgArr[(id * imgArr.length) % 10]} />
+          <DefaultImg source={imgArr[id % 9]} />
         ) : (
           <RealImg source={{uri: realImg}} />
         )}
@@ -77,16 +79,16 @@ const TextArea = styled.View``;
 
 const Title = styled.View`
   flex-direction: row;
+  align-items: center;
 `;
 
 const Name = styled.Text`
-  margin-right: 4px;
   font-weight: 500;
   font-size: 16px;
 `;
 
 const SmallText = styled.Text`
-  margin: 0 4px;
+  margin: ${props => (props.margin ? 0 : "0 4px")};
   font-size: 13px;
   font-weight: 300;
   color: ${props => (props.name ? "rgba(0,0,0,0.6)" : props.color)};
