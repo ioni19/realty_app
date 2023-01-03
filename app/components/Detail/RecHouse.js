@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigation} from "@react-navigation/native";
 import {StyleSheet, View} from "react-native";
 import styled from "styled-components/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {AirbnbRating} from "react-native-ratings";
 import {StyledContainer, SectionTitle} from "../../screens/Detail";
 import {mainColor, bgColor} from "../../theme/theme";
@@ -11,9 +12,44 @@ import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {HeartIcon} from "../../screens/Detail";
 
 const RecHouse = () => {
+  const [starRate, setStarRate] = useState(null);
   const ratingCompleted = rate => {
-    console.log("Rating is: " + rate);
+    storeStarRate(rate);
   };
+
+  useEffect(() => {
+    getStarRate();
+  }, []);
+
+  const storeStarRate = async rate => {
+    try {
+      await AsyncStorage.setItem("starRate", `${rate}`);
+    } catch (e) {
+      console.log("별점 저장 에러", e);
+    }
+  };
+
+  const getStarRate = async () => {
+    try {
+      const value = await AsyncStorage.getItem("starRate");
+      setStarRate(value);
+      if (value == null) {
+        starRate(null);
+      }
+    } catch (e) {
+      console.log("별점 가져오기 에러", e);
+    }
+  };
+
+  const removeStarDate = async () => {
+    try {
+      await AsyncStorage.removeItem("starRate");
+    } catch (e) {
+      console.log("별점 저장 날리기 에러", e);
+    }
+  };
+
+  // removeStarDate(); // 별점 매기기전 테스트용
 
   return (
     <>
@@ -26,10 +62,14 @@ const RecHouse = () => {
         renderItem={({item}) => <RecHouseCard data={item} />}
         bouces={false}></CardList>
       <RecRating>
-        <BoldText>추천 집의 만족도는 어떠셨나요?</BoldText>
+        <BoldText>
+          {starRate === null
+            ? `추천 집의 만족도는 어떠셨나요?`
+            : `만족도를 입력해 주셔서 감사합니다`}
+        </BoldText>
         <AirbnbRating
           count={5}
-          defaultRating={0}
+          defaultRating={Number(starRate)}
           size={32}
           style={{paddingRight: 10}}
           reviews={[]}
@@ -41,8 +81,17 @@ const RecHouse = () => {
           }}
         />
         <View style={{marginTop: 15}}>
-          <LightText>추천 만족도 별점을 남겨 주시면</LightText>
-          <LightText>나와 맞는 집을 추천 받을 확률이 높아져요</LightText>
+          {starRate === null ? (
+            <>
+              <LightText>추천 만족도 별점을 남겨 주시면</LightText>
+              <LightText>나와 맞는 집을 추천 받을 확률이 높아져요</LightText>
+            </>
+          ) : (
+            <>
+              <LightText>계속 발전하는 추천 아파트 알고리즘에</LightText>
+              <LightText>만족도가 바뀌셨다면 수정해주세요</LightText>
+            </>
+          )}
         </View>
       </RecRating>
     </>
