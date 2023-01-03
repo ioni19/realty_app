@@ -1,24 +1,26 @@
-import React, {useState} from 'react';
-import styled from 'styled-components/native';
-import {View, Text} from 'react-native';
-import TextToggle from './TextToggle';
-import {bgColor, mainColor} from '../../theme/theme';
-import {StyledContainer, SectionTitle, HLine} from '../../screens/Detail';
+import React, {useState} from "react";
+import styled from "styled-components/native";
+import {View, Text} from "react-native";
+import TextToggle from "./TextToggle";
+import {bgColor, mainColor} from "../../theme/theme";
+import {StyledContainer, SectionTitle, HLine} from "../../screens/Detail";
 
-const kind = {text: ['매매', '전/월세'], fontSize: 17, height: 40};
+const kind = {text: ["매매", "전/월세"], fontSize: 17, height: 40};
 const period = {
-  text: ['최근 3년', '최근 5년', '전체'],
+  text: ["최근 3년", "최근 5년", "전체"],
   fontSize: 12,
   height: 30,
 };
 
 const PriceInfo = () => {
-  const [pickKind, setPickKind] = useState('');
-  const [pickPeriod, setpickPeriod] = useState('');
+  const [pickKind, setPickKind] = useState("");
+  const [pickPeriod, setpickPeriod] = useState("");
 
   return (
     <StyledContainer>
-      <SectionTitle>실거래가 정보</SectionTitle>
+      <View style={{flexDirection: "row"}}>
+        <SectionTitle>실거래가 정보</SectionTitle>
+      </View>
       <TextToggle data={kind} setPick={setPickKind} />
       <TextContainer>
         <Wrapper>

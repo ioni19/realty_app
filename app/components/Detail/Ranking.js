@@ -6,7 +6,7 @@ import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {useNavigation} from "@react-navigation/native";
 import {HeartIcon} from "../../screens/Detail";
 
-const Ranking = ({name, pick, colorChange}) => {
+const Ranking = ({name, isLike, colorChange}) => {
   const navigation = useNavigation();
   const goToDetail = () => {
     navigation.push("Stack", {screen: "상세정보"});
@@ -43,7 +43,7 @@ const Ranking = ({name, pick, colorChange}) => {
         <HeartIcon onPress={colorChange}>
           <Ionicons
             name='heart-sharp'
-            color={pick ? mainColor : "rgba(0,0,0,0.2)"}
+            color={isLike ? mainColor : "rgba(0,0,0,0.2)"}
             size={24}
           />
         </HeartIcon>

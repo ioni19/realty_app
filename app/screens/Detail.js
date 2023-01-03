@@ -15,15 +15,15 @@ import SaleInfo from "../components/Detail/SaleInfo";
 import {bgColor} from "../theme/theme";
 
 const Detail = () => {
-  const [pick, setPick] = useState(false);
+  const [isLike, setIsLike] = useState(false);
   const colorChange = () => {
-    setPick(pick => !pick);
+    setIsLike(isLike => !isLike);
   };
 
   return (
     <View style={{backgroundColor: "white", flex: 1}}>
       <ScrollView>
-        <Ranking pick={pick} colorChange={colorChange} />
+        <Ranking isLike={isLike} colorChange={colorChange} />
         <Gap />
         <ItemScore />
         <Gap />
@@ -41,7 +41,7 @@ const Detail = () => {
         <Gap />
         <Contact />
         <Gap />
-        <BottomBtn pick={pick} colorChange={colorChange} />
+        <BottomBtn isLike={isLike} colorChange={colorChange} />
       </ScrollView>
     </View>
   );

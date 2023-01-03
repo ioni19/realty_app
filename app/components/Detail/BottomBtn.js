@@ -6,7 +6,7 @@ import {mainColor} from "../../theme/theme";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {HeartIcon} from "../../screens/Detail";
 
-const BottomBtn = ({pick, colorChange}) => {
+const BottomBtn = ({isLike, colorChange}) => {
   return (
     <StyledContainer style={{paddingBottom: 20}}>
       <FlexRow>
@@ -14,14 +14,14 @@ const BottomBtn = ({pick, colorChange}) => {
           <HeartIcon as={View} style={{width: 40, height: 40, marginRight: 10}}>
             <Ionicons
               name='heart-sharp'
-              color={pick ? mainColor : "rgba(0,0,0,0.2)"}
+              color={isLike ? mainColor : "rgba(0,0,0,0.2)"}
               size={22}
             />
           </HeartIcon>
-          <BoldText pick={pick}>찜하기</BoldText>
+          <BoldText isLike={isLike}>찜하기</BoldText>
         </WhiteBtn>
         <WhiteBtn>
-          <BoldText pick>매물더보기+</BoldText>
+          <BoldText isLike>매물더보기+</BoldText>
         </WhiteBtn>
       </FlexRow>
       <BlueBtn>
@@ -34,7 +34,7 @@ const BottomBtn = ({pick, colorChange}) => {
 const BoldText = styled.Text`
   font-size: 21px;
   font-weight: 700;
-  color: ${props => (props.pick ? mainColor : "rgba(0,0,0,0.4)")};
+  color: ${props => (props.isLike ? mainColor : "rgba(0,0,0,0.4)")};
   /* color: white; */
 `;
 
