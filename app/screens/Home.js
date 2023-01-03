@@ -1,8 +1,12 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {View, Text, SafeAreaView} from 'react-native';
+import React, {useEffect} from "react";
+import auth from "@react-native-firebase/auth";
+import styled from "styled-components/native";
+import {View, Text, SafeAreaView} from "react-native";
 
 const Home = () => {
+  useEffect(() => {
+    console.log(auth().currentUser);
+  }, []);
   return (
     <SafeView>
       <View>
