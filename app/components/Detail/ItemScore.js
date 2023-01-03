@@ -8,23 +8,26 @@ const ItemScore = () => {
     <StyledContainer>
       <SectionTitle>투자 항목 점수</SectionTitle>
       <Container>
-        <ScoreText name='전세가율' unit='%' />
-        <ScoreText name='갭가격' unit='원' />
-        <ScoreText name='시가총액' unit='원' />
-        <ScoreText name='평당매매가' unit='원' />
+        <ScoreText name='전세가율' unit='%' price='68.5' percent='42' />
+        <ScoreText name='갭가격' unit='원' price='1.3억' percent='51' />
+        <ScoreText name='시가총액' unit='원' price='1830.9억' percent='39' />
+        <ScoreText name='평당매매가' unit='원' price='1.1천만' percent='67' />
       </Container>
     </StyledContainer>
   );
 };
 
-const ScoreText = ({name, unit}) => {
+const ScoreText = ({name, unit, price, percent}) => {
   return (
     <TextBox>
       <MdText name>{name}</MdText>
       <Row>
-        <MdText color='rgba(0,0,0,0.7)'>89.3{unit}</MdText>
+        <MdText color='rgba(0,0,0,0.7)'>
+          {price}
+          {unit}
+        </MdText>
         <VerticalLine />
-        <MdText color={mainColor}>상위 11%</MdText>
+        <MdText color={mainColor}>상위 {percent}%</MdText>
       </Row>
     </TextBox>
   );

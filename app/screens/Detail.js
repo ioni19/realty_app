@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import {TouchableOpacity, Text, View, ScrollView} from "react-native";
+import React, {useRef, useState} from "react";
+import {TouchableOpacity, Text, View, ScrollView, Button} from "react-native";
+import {wrapScrollView, useScrollIntoView} from "react-native-scroll-into-view";
 import styled from "styled-components/native";
 import BasicInfo from "../components/Detail/BasicInfo";
 import BottomBtn from "../components/Detail/BottomBtn";
@@ -11,39 +12,45 @@ import Ranking from "../components/Detail/Ranking";
 import RecHouse from "../components/Detail/RecHouse";
 import Report from "../components/Detail/Report";
 import SaleInfo from "../components/Detail/SaleInfo";
-
 import {bgColor} from "../theme/theme";
 
+const CustomScrollView = wrapScrollView(ScrollView);
+
 const Detail = () => {
+  const priceRef = useRef();
+  console.log(priceRef);
   const [isLike, setIsLike] = useState(false);
   const colorChange = () => {
     setIsLike(isLike => !isLike);
   };
+  const scrollIntoView = useScrollIntoView();
+  const viewRef = useRef();
 
   return (
-    <View style={{backgroundColor: "white", flex: 1}}>
-      <ScrollView>
-        <Ranking isLike={isLike} colorChange={colorChange} />
-        <Gap />
-        <ItemScore />
-        <Gap />
-        <PriceInfo />
-        <Gap />
-        <SaleInfo />
-        <Gap />
-        <InfoByField />
-        <Gap />
-        <Report />
-        <Gap />
-        <BasicInfo />
-        <Gap />
-        <RecHouse />
-        <Gap />
-        <Contact />
-        <Gap />
-        <BottomBtn isLike={isLike} colorChange={colorChange} />
-      </ScrollView>
-    </View>
+    // <View style={{backgroundColor: "white", flex: 1}}>
+    <CustomScrollView ref={viewRef}>
+      <Text onPress={() => scrollIntoView(viewRef.current)}>스크롤 이동</Text>
+      <Ranking isLike={isLike} colorChange={colorChange} />
+      <Gap />
+      <ItemScore />
+      <Gap />
+      <PriceInfo />
+      <Gap />
+      <SaleInfo />
+      <Gap />
+      <InfoByField />
+      <Gap />
+      <Report />
+      <Gap />
+      <BasicInfo />
+      <Gap />
+      <RecHouse />
+      <Gap />
+      <Contact />
+      <Gap />
+      <BottomBtn isLike={isLike} colorChange={colorChange} />
+    </CustomScrollView>
+    // </View>
   );
 };
 

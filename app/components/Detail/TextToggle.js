@@ -1,17 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import styled from 'styled-components/native';
-import {StyleSheet} from 'react-native';
-import {bgColor} from '../../theme/theme';
+import React, {useEffect, useState} from "react";
+import styled from "styled-components/native";
+import {StyleSheet} from "react-native";
+import {bgColor} from "../../theme/theme";
 
 const TextToggle = ({data, setPick}) => {
   const [pickValue, setPickValue] = useState(data.text[0]);
-  // useEffect(() => {
-  //   if (pickValue === '매매') {
-  //     setTest(true);
-  //   } else setTest(false);
-  // }, [pickValue]);
-  // console.log(data);
-  const testFucntion = text => {
+  const handlePickChange = text => {
     setPickValue(text);
     setPick(pickValue);
   };
@@ -20,14 +14,12 @@ const TextToggle = ({data, setPick}) => {
       {data.text.map((text, idx) => (
         <ToggleBtn
           key={idx}
-          onPress={() => testFucntion(text)}
-          pick={pickValue === text ? true : false}
+          onPress={() => handlePickChange(text)}
+          pick={pickValue === text}
           style={pickValue === text && styles.shadow}
           height={data.height}
           activeOpacity={1}>
-          <BtnText
-            pick={pickValue === text ? true : false}
-            fontSize={data.fontSize}>
+          <BtnText pick={pickValue === text} fontSize={data.fontSize}>
             {text}
           </BtnText>
         </ToggleBtn>
@@ -43,20 +35,19 @@ const Container = styled.View`
   padding: 4px;
   width: 100%;
   border-radius: 50px;
-
 `;
 
 const ToggleBtn = styled.TouchableOpacity`
   justify-content: center;
   flex: 1;
   height: ${props => props.height}px;
-  background-color: ${({pick}) => (pick ? 'white' : bgColor)};
+  background-color: ${({pick}) => (pick ? "white" : bgColor)};
   border-radius: 50px;
 `;
 
 const styles = StyleSheet.create({
   shadow: {
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: -2,
       height: 3,
@@ -70,8 +61,8 @@ const styles = StyleSheet.create({
 const BtnText = styled.Text`
   text-align: center;
   font-size: ${props => props.fontSize}px;
-  font-weight: ${({pick}) => (pick ? '600' : '400')};
-  color: ${({pick}) => (pick ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.5)')};
+  font-weight: ${({pick}) => (pick ? "600" : "400")};
+  color: ${({pick}) => (pick ? "rgba(0,0,0,0.8)" : "rgba(0,0,0,0.5)")};
 `;
 
 export default TextToggle;
