@@ -21,7 +21,7 @@ const SpaceSelectModal = ({
         <FlexRow>
           <SectionTitle>아파트 평형 선택</SectionTitle>
           <CloseBtn>
-            <CloseText onPress={closeModal}>닫기</CloseText>
+            <CloseText onPress={() => setIsOpen(false)}>닫기</CloseText>
           </CloseBtn>
         </FlexRow>
         {data.map(item => (
