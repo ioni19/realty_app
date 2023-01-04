@@ -2,16 +2,17 @@ import React from "react";
 import styled from "styled-components/native";
 import {StyledContainer, SectionTitle} from "../../screens/Detail";
 
-const BasicInfo = () => {
+const BasicInfo = ({data}) => {
+  console.log(data);
   return (
     <StyledContainer>
       <SectionTitle>단지 기본정보</SectionTitle>
       <Container>
-        <TextBox name='주소' content='경기도 오산시 대원동 901' />
-        <TextBox name='준공년월' content='2009년 7월' />
-        <TextBox name='세대수' content='433세대 (총6개동)' />
-        <TextBox name='주차가능수' content='1.45세대' />
-        <TextBox name='난방' content='지역난방, 열병합' />
+        <TextBox name='주소' content={data.adress} />
+        <TextBox name='준공년월' content={data.createDate} />
+        <TextBox name='세대수' content={data.ablePark} />
+        <TextBox name='주차가능수' content={data.households} />
+        <TextBox name='난방' content={data.heat} />
       </Container>
     </StyledContainer>
   );

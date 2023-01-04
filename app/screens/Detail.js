@@ -1,5 +1,12 @@
-import React, {useRef, useState} from "react";
-import {TouchableOpacity, Text, View, ScrollView, Button} from "react-native";
+import React, {useEffect, useRef, useState} from "react";
+import {
+  TouchableOpacity,
+  Text,
+  View,
+  ScrollView,
+  Button,
+  FlatList,
+} from "react-native";
 import styled from "styled-components/native";
 import BasicInfo from "../components/Detail/BasicInfo";
 import BottomBtn from "../components/Detail/BottomBtn";
@@ -12,46 +19,54 @@ import RecHouse from "../components/Detail/RecHouse";
 import Report from "../components/Detail/Report";
 import SaleInfo from "../components/Detail/SaleInfo";
 import {bgColor} from "../theme/theme";
+import {getProduct} from "../lib/product";
 
-const Detail = () => {
+const Detail = ({route}) => {
+  const [productData, setProductData] = useState("");
+  const {params} = route;
   const [isLike, setIsLike] = useState(false);
-  const [scrollToY, setScrollToY] = useState(0);
+  // const [scrollToY, setScrollToY] = useState(0);
   const [scrollRef, setRef] = useState();
-  // const scrollRef = useRef();
-  // console.log("디테일ref", scrollRef);
 
   const colorChange = () => {
     setIsLike(isLike => !isLike);
   };
 
-  // const handleScroll = event => {
-  //   scrollRef.scrollTo({y: scrollToY + 35, animated: true});
-  // };
+  useEffect(() => {
+    getProduct(params.id, setProductData);
+    // console.log(productData.ranking);
+  }, []);
 
   return (
-    <View style={{backgroundColor: "white", flex: 1}}>
-      <ScrollView ref={ref => setRef(ref)}>
-        <Ranking isLike={isLike} colorChange={colorChange} />
-        <Gap />
-        <ItemScore />
-        <Gap />
-        <PriceInfo ref={scrollRef} />
-        <Gap />
-        <SaleInfo />
-        <Gap />
-        <InfoByField />
-        <Gap />
-        <Report />
-        <Gap />
-        <BasicInfo />
-        <Gap />
-        <RecHouse />
-        <Gap />
-        <Contact />
-        <Gap />
-        <BottomBtn isLike={isLike} colorChange={colorChange} />
-      </ScrollView>
-    </View>
+    productData !== "" && (
+      <View style={{backgroundColor: "white", flex: 1}}>
+        <ScrollView ref={ref => setRef(ref)}>
+          <Ranking
+            data={productData.ranking}
+            isLike={isLike}
+            colorChange={colorChange}
+          />
+          <Gap />
+          <ItemScore data={productData.itemScore} />
+          <Gap />
+          <PriceInfo data={productData.priceInfo} ref={scrollRef} />
+          <Gap />
+          <SaleInfo data={productData.saleInfo} />
+          <Gap />
+          <InfoByField />
+          <Gap />
+          <Report />
+          <Gap />
+          <BasicInfo data={productData.basicInfo} />
+          <Gap />
+          <RecHouse />
+          <Gap />
+          <Contact />
+          <Gap />
+          <BottomBtn isLike={isLike} colorChange={colorChange} />
+        </ScrollView>
+      </View>
+    )
   );
 };
 

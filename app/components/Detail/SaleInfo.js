@@ -13,17 +13,17 @@ import {mainColor} from "../../theme/theme";
 import Icon from "react-native-vector-icons/dist/AntDesign";
 import {saleInfoData} from "../../mockData/saleInfoData";
 
-const SaleInfo = () => {
+const SaleInfo = ({data}) => {
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(false);
-  const [resArr, setRestArr] = useState(saleInfoData.slice(0, 2));
+  const [resArr, setRestArr] = useState(data.slice(0, 2));
 
   const handleClick = () => {
     setIsVisible(true);
     if (isVisible) {
       navigation.navigate("InReady");
     } else {
-      setRestArr(() => [...saleInfoData]);
+      setRestArr(() => [...data]);
     }
   };
 

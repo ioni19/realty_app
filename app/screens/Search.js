@@ -3,22 +3,20 @@ import styled from "styled-components/native";
 import {View, Text, FlatList, ScrollView, TouchableOpacity} from "react-native";
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
-import test from "../mockData/test";
 import {bgColor} from "../theme/theme";
 import {getCards} from "../lib/card";
 
 const Search = () => {
   const [cardData, setCardData] = useState(null);
-  const [sort, setSort] = useState("id");
+  const [sort, setSort] = useState("이름");
   const sortKey = {
     수익순: "info.prediction",
     가격순: "info.sellingPrice",
     인기순: "rank",
-    id: "id",
+    이름: "name",
   };
 
   useEffect(() => {
-    console.log(sortKey[sort]);
     getCards(sortKey[sort], setCardData);
   }, [sort]);
 
@@ -27,7 +25,11 @@ const Search = () => {
       <>
         <SearchBar setSort={setSort} sort={sort} />
         <CardList
-          data={cardData}
+          data={
+            sort === "수익순" || sort === "가격순"
+              ? cardData.reverse()
+              : cardData
+          }
           keyExtractor={item => item.id}
           alwaysBounceVertical={false}
           bounces={false}

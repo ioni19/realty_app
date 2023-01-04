@@ -3,31 +3,33 @@ import styled from "styled-components/native";
 import {mainColor} from "../../theme/theme";
 import {StyledContainer, SectionTitle} from "../../screens/Detail";
 
-const ItemScore = () => {
+const ItemScore = ({data}) => {
+  const {jeonsePercent, gapPrice, totalPrice, flatPrice} = data;
+  console.log(data);
   return (
     <StyledContainer>
       <SectionTitle>투자 항목 점수</SectionTitle>
       <Container>
-        <ScoreText name='전세가율' unit='%' price='68.5' percent='42' />
-        <ScoreText name='갭가격' unit='원' price='1.3억' percent='51' />
-        <ScoreText name='시가총액' unit='원' price='1830.9억' percent='39' />
-        <ScoreText name='평당매매가' unit='원' price='1.1천만' percent='67' />
+        <ScoreText name='전세가율' unit='%' data={jeonsePercent} />
+        <ScoreText name='갭가격' unit='원' data={gapPrice} />
+        <ScoreText name='시가총액' unit='원' data={totalPrice} />
+        <ScoreText name='평당매매가' unit='원' data={flatPrice} />
       </Container>
     </StyledContainer>
   );
 };
 
-const ScoreText = ({name, unit, price, percent}) => {
+const ScoreText = ({name, unit, data}) => {
   return (
     <TextBox>
       <MdText name>{name}</MdText>
       <Row>
         <MdText color='rgba(0,0,0,0.7)'>
-          {price}
+          {data[0]}
           {unit}
         </MdText>
         <VerticalLine />
-        <MdText color={mainColor}>상위 {percent}%</MdText>
+        <MdText color={mainColor}>상위 {data[1]}%</MdText>
       </Row>
     </TextBox>
   );

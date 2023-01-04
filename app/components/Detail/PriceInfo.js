@@ -16,11 +16,11 @@ const period = {
   height: 30,
 };
 
-const PriceInfo = forwardRef((_, ref) => {
+const PriceInfo = forwardRef(({data}, ref) => {
   const [pickKind, setPickKind] = useState("");
   const [pickPeriod, setpickPeriod] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [select, SetSelect] = useState(widthDataType[0].type);
+  const [select, SetSelect] = useState(data.widthType[0].type);
   const [scrollToY, setScrollToY] = useState(0);
   const handleScroll = () => {
     ref.scrollTo({y: scrollToY - 35, animated: true});
@@ -37,7 +37,7 @@ const PriceInfo = forwardRef((_, ref) => {
         onSwipeComplete={() => setIsOpen(false)}>
         <SpaceSelectModal
           handleScroll={handleScroll}
-          data={widthDataType}
+          data={data.widthType}
           setIsOpen={setIsOpen}
           setSelect={SetSelect}
           select={select}

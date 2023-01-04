@@ -6,7 +6,8 @@ import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {useNavigation} from "@react-navigation/native";
 import {HeartIcon} from "../../screens/Detail";
 
-const Ranking = ({name, isLike, colorChange}) => {
+const Ranking = ({data, isLike, colorChange}) => {
+  const {myName, myRank, prevName, nextName} = data;
   const navigation = useNavigation();
   const goToDetail = () => {
     navigation.push("Stack", {screen: "상세정보"});
@@ -15,29 +16,29 @@ const Ranking = ({name, isLike, colorChange}) => {
     <View style={{height: 110, backgroundColor: "white"}}>
       <Container>
         <RankContainer>
-          <SmallText>37위</SmallText>
+          <SmallText>{myRank - 1}위</SmallText>
           <View>
             <MyRank>
               <Ionicons name='stats-chart' color='white' size={28} />
               <View>
                 <SmallText myRank>순위</SmallText>
                 <SmallText myRank strong>
-                  38위
+                  {myRank}위
                 </SmallText>
               </View>
             </MyRank>
           </View>
-          <SmallText>39위</SmallText>
+          <SmallText>{myRank + 1}위</SmallText>
         </RankContainer>
         <NameContainer>
           <NameWrapper onPress={goToDetail}>
-            <NameText>오산롯데캐슬스카이파크</NameText>
+            <NameText>{prevName}</NameText>
           </NameWrapper>
           <NameWrapper>
-            <NameText myRank>{name}</NameText>
+            <NameText myRank>{myName}</NameText>
           </NameWrapper>
           <NameWrapper>
-            <NameText>이림</NameText>
+            <NameText>{nextName}</NameText>
           </NameWrapper>
         </NameContainer>
         <HeartIcon onPress={colorChange}>

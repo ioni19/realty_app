@@ -8,7 +8,6 @@ const sortKind = ["수익순", "가격순", "인기순"];
 const SearchBar = ({setSort, sort}) => {
   const handleSort = text => {
     setSort(text);
-    console.log(sort);
   };
 
   return (

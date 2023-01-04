@@ -11,7 +11,7 @@ const Card = ({data}) => {
 
   const navigation = useNavigation();
   const goToDetail = () => {
-    navigation.navigate("Stack", {screen: "상세정보"});
+    navigation.navigate("Stack", {screen: "상세정보", params: {id}});
   };
   return (
     <CardContainer activeOpacity={1} onPress={goToDetail}>
