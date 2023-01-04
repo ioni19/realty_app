@@ -1,10 +1,16 @@
 import React from "react";
 import styled from "styled-components/native";
-import {TextInput, Text} from "react-native";
+import {TextInput, Text, View} from "react-native";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
-import {SCREEN_HEIGHT} from "../theme/theme";
+import {SCREEN_HEIGHT, mainColor} from "../theme/theme";
 
-const SearchBar = () => {
+const sortKind = ["수익순", "가격순", "인기순"];
+const SearchBar = ({setSort, sort}) => {
+  const handleSort = text => {
+    setSort(text);
+    console.log(sort);
+  };
+
   return (
     <Container>
       <SearchInputWrapper>
@@ -19,11 +25,11 @@ const SearchBar = () => {
       </SearchInputWrapper>
       <SortFilterContainer>
         <SortBox>
-          <SmallText>수익순</SmallText>
-          <VerticalLine />
-          <SmallText>가격순</SmallText>
-          <VerticalLine />
-          <SmallText>인기순</SmallText>
+          {sortKind.map((text, idx) => (
+            <SortBtn onPress={() => handleSort(text)} key={idx} sort={text}>
+              <SmallText color={sort === text}>{text}</SmallText>
+            </SortBtn>
+          ))}
         </SortBox>
         <FilterBtn activeOpacity={1}>
           <Ionicons name='funnel-outline' size={20} />
@@ -65,17 +71,25 @@ const SortBox = styled.View`
   margin-top: 8px;
 `;
 
+const SortBtn = styled.TouchableOpacity.attrs({activeOpacity: 1})`
+  border-right-width: 1px;
+  border-right-color: ${props =>
+    props.sort === "인기순" ? "white" : "rgba(0, 0, 0, 0.3)"};
+`;
+
 const SmallText = styled.Text`
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.3);
+  color: ${props => (props.color ? mainColor : "rgba(0, 0, 0, 0.3)")};
   font-weight: 600;
+  margin: 0 7px;
 `;
 
 const VerticalLine = styled.Text`
   margin: 0 7px;
   width: 1px;
-  height: 60%;
-  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  background-color: ${props =>
+    props.sort === "인기순" ? "white" : "rgba(0, 0, 0, 0.3)"};
 `;
 
 const FilterBtn = styled.TouchableOpacity``;

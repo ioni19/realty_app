@@ -9,14 +9,23 @@ import {getCards} from "../lib/card";
 
 const Search = () => {
   const [cardData, setCardData] = useState(null);
+  const [sort, setSort] = useState("id");
+  const sortKey = {
+    수익순: "info.prediction",
+    가격순: "info.sellingPrice",
+    인기순: "rank",
+    id: "id",
+  };
+
   useEffect(() => {
-    const data = getCards("id", setCardData);
-  }, []);
+    console.log(sortKey[sort]);
+    getCards(sortKey[sort], setCardData);
+  }, [sort]);
 
   return (
     <SafeView>
       <>
-        <SearchBar />
+        <SearchBar setSort={setSort} sort={sort} />
         <CardList
           data={cardData}
           keyExtractor={item => item.id}
