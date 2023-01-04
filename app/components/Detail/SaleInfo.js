@@ -13,10 +13,10 @@ import {mainColor} from "../../theme/theme";
 import Icon from "react-native-vector-icons/dist/AntDesign";
 import {saleInfoData} from "../../mockData/saleInfoData";
 
-const SaleInfo = ({data}) => {
+const SaleInfo = ({data, setSaleInfoY}) => {
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(false);
-  const [resArr, setRestArr] = useState(data.slice(0, 2));
+  const [resArr, setRestArr] = useState(data !== null && data.slice(0, 2));
 
   const handleClick = () => {
     setIsVisible(true);
@@ -29,16 +29,24 @@ const SaleInfo = ({data}) => {
 
   return (
     <>
-      <StyledContainer>
+      <StyledContainer
+        onLayout={e => {
+          const layout = e.nativeEvent.layout;
+          setSaleInfoY(layout.y);
+        }}>
         <SectionTitle style={{marginBottom: 10}}>매물 정보</SectionTitle>
-        {resArr.map(item => (
-          <Card key={item.id} data={item} />
-        ))}
+        {data === null ? (
+          <Text>매물정보없음</Text>
+        ) : (
+          resArr.map(item => <Card key={item.id} data={item} />)
+        )}
       </StyledContainer>
       <HLine />
-      <MoreBtn onPress={handleClick}>
-        <MoreText>매물 더보기+</MoreText>
-      </MoreBtn>
+      {data !== null && (
+        <MoreBtn onPress={handleClick}>
+          <MoreText>매물 더보기+</MoreText>
+        </MoreBtn>
+      )}
     </>
   );
 };

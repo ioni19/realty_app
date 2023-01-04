@@ -6,7 +6,7 @@ import {mainColor} from "../../theme/theme";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {HeartIcon} from "../../screens/Detail";
 
-const BottomBtn = ({isLike, colorChange}) => {
+const BottomBtn = ({isLike, colorChange, scrollFunc, saleInfo}) => {
   return (
     <StyledContainer style={{paddingBottom: 20}}>
       <FlexRow>
@@ -20,7 +20,7 @@ const BottomBtn = ({isLike, colorChange}) => {
           </HeartIcon>
           <BoldText isLike={isLike}>찜하기</BoldText>
         </WhiteBtn>
-        <WhiteBtn>
+        <WhiteBtn onPress={scrollFunc}>
           <BoldText isLike>매물더보기+</BoldText>
         </WhiteBtn>
       </FlexRow>

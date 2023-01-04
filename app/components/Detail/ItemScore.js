@@ -5,7 +5,6 @@ import {StyledContainer, SectionTitle} from "../../screens/Detail";
 
 const ItemScore = ({data}) => {
   const {jeonsePercent, gapPrice, totalPrice, flatPrice} = data;
-  console.log(data);
   return (
     <StyledContainer>
       <SectionTitle>투자 항목 점수</SectionTitle>

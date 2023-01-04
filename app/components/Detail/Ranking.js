@@ -9,8 +9,13 @@ import {HeartIcon} from "../../screens/Detail";
 const Ranking = ({data, isLike, colorChange}) => {
   const {myName, myRank, prevName, nextName} = data;
   const navigation = useNavigation();
-  const goToDetail = () => {
-    navigation.push("Stack", {screen: "상세정보"});
+  const goToPrevDetail = () => {
+    const id = myRank - 1;
+    navigation.push("Stack", {screen: "상세정보", params: {id}});
+  };
+  const goToNextDetail = () => {
+    const id = myRank + 1;
+    navigation.push("Stack", {screen: "상세정보", params: {id}});
   };
   return (
     <View style={{height: 110, backgroundColor: "white"}}>
@@ -31,13 +36,13 @@ const Ranking = ({data, isLike, colorChange}) => {
           <SmallText>{myRank + 1}위</SmallText>
         </RankContainer>
         <NameContainer>
-          <NameWrapper onPress={goToDetail}>
+          <NameWrapper onPress={goToPrevDetail}>
             <NameText>{prevName}</NameText>
           </NameWrapper>
           <NameWrapper>
             <NameText myRank>{myName}</NameText>
           </NameWrapper>
-          <NameWrapper>
+          <NameWrapper onPress={goToNextDetail}>
             <NameText>{nextName}</NameText>
           </NameWrapper>
         </NameContainer>

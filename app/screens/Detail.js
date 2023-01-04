@@ -1,12 +1,6 @@
-import React, {useEffect, useRef, useState} from "react";
-import {
-  TouchableOpacity,
-  Text,
-  View,
-  ScrollView,
-  Button,
-  FlatList,
-} from "react-native";
+import React, {useEffect, useState} from "react";
+import {useNavigation} from "@react-navigation/native";
+import {View, ScrollView} from "react-native";
 import styled from "styled-components/native";
 import BasicInfo from "../components/Detail/BasicInfo";
 import BottomBtn from "../components/Detail/BottomBtn";
@@ -22,19 +16,27 @@ import {bgColor} from "../theme/theme";
 import {getProduct} from "../lib/product";
 
 const Detail = ({route}) => {
+  const navigation = useNavigation();
   const [productData, setProductData] = useState("");
   const {params} = route;
   const [isLike, setIsLike] = useState(false);
   // const [scrollToY, setScrollToY] = useState(0);
   const [scrollRef, setRef] = useState();
+  const [saleInfoY, setSaleInfoY] = useState();
 
   const colorChange = () => {
     setIsLike(isLike => !isLike);
   };
 
+  const scrollToSaleInfo = () => {
+    if (productData.saleInfo === null) {
+      scrollRef.scrollTo({y: saleInfoY - 35, animated: true});
+    } else navigation.navigate("InReady");
+  };
+
+  console.log(saleInfoY);
   useEffect(() => {
     getProduct(params.id, setProductData);
-    // console.log(productData.ranking);
   }, []);
 
   return (
@@ -51,7 +53,7 @@ const Detail = ({route}) => {
           <Gap />
           <PriceInfo data={productData.priceInfo} ref={scrollRef} />
           <Gap />
-          <SaleInfo data={productData.saleInfo} />
+          <SaleInfo data={productData.saleInfo} setSaleInfoY={setSaleInfoY} />
           <Gap />
           <InfoByField />
           <Gap />
@@ -63,7 +65,12 @@ const Detail = ({route}) => {
           <Gap />
           <Contact />
           <Gap />
-          <BottomBtn isLike={isLike} colorChange={colorChange} />
+          <BottomBtn
+            isLike={isLike}
+            colorChange={colorChange}
+            scrollFunc={scrollToSaleInfo}
+            // saleInfo={productData.saleInfo}
+          />
         </ScrollView>
       </View>
     )
