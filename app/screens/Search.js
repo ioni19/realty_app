@@ -59,6 +59,8 @@ const Search = () => {
           keyExtractor={item => item.id}
           alwaysBounceVertical={false}
           bounces={false}
+          onEndReached={()=>alert('끝')}
+          onEndReachedTreshold={0.5}
           renderItem={({item}) => <Card data={item} />}
         />
         {isOpen && (

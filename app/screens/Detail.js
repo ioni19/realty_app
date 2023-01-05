@@ -20,7 +20,6 @@ const Detail = ({route}) => {
   const [productData, setProductData] = useState("");
   const {params} = route;
   const [isLike, setIsLike] = useState(false);
-  // const [scrollToY, setScrollToY] = useState(0);
   const [scrollRef, setRef] = useState();
   const [saleInfoY, setSaleInfoY] = useState();
 

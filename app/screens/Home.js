@@ -27,54 +27,81 @@ const getRank = () => {
 
 const addInfo = () => {
   db.collection("product")
-    .doc("순위2")
+    .doc("순위40")
     .set({
-      id: 2,
+      id: 40,
       ranking: {
-        myName: "래미안리더스원",
-        myRank: 2,
-        prevName: "디에이치반포라클라스",
-        nextName: "아크로리버파크",
+        myName: "더퍼스트관희 1차",
+        myRank: 40,
+        prevName: "이온빌",
+        nextName: "",
       },
       itemScore: {
-        jeonsePercent: [991, 15],
-        gapPrice: ["6.2억", 14],
-        totalPrice: ["1.7조", 3],
-        flatPrice: ["7.6천만", 1],
+        jeonsePercent: [81.6, 0],
+        gapPrice: ["57억", 0],
+        totalPrice: ["10조", 0],
+        flatPrice: ["283억만", 0],
       },
       priceInfo: {
         widthType: [
           {
             id: 1,
             households: 192,
-            type: 33,
+            type: 32,
             supplyArea: 40,
             dedicatedArea: 28,
-            sellingPrice: "42.7억원",
-            jeonsePrice: "16.6억원",
+            sellingPrice: "265억원",
+            jeonsePrice: "190억원",
           },
+          {
+            id: 2,
+            households: 192,
+            type: 35,
+            supplyArea: 31,
+            dedicatedArea: 32,
+            sellingPrice: "345억원",
+            jeonsePrice: "145억원",
+          },
+          // {
+          //   id: 3,
+          //   households: 192,
+          //   type: 73,
+          //   supplyArea: 50,
+          //   dedicatedArea: 32,
+          //   sellingPrice: "25.3억원",
+          //   jeonsePrice: "16.5억원",
+          // },
+          // {
+          //   id: 4,
+          //   households: 192,
+          //   type: 74,
+          //   supplyArea: 50,
+          //   dedicatedArea: 32,
+          //   sellingPrice: "22억원",
+          //   jeonsePrice: "21.3억원",
+          // }
         ],
       },
       saleInfo: [
         {
           id: 1,
-          floor: "104동 19층",
+          floor: "1동 6층",
           space: "110m²(33평)",
           date: "22.12.31",
           kind: "전세",
-          price: 18,
+          price: 22,
         },
         {
           id: 2,
-          floor: "104동 1층",
+          floor: "1동 6층",
           space: "110m²(33평)",
           date: "22.12.27",
           kind: "매매",
-          price: 34.5,
+          price: 23,
         },
         {
           id: 3,
-          floor: "106동 25층",
+          floor: "2동 25층",
           space: "110m²(33평)",
           date: "22.12.27",
           kind: "전세",
@@ -82,7 +109,7 @@ const addInfo = () => {
         },
         {
           id: 4,
-          floor: "106동 25층",
+          floor: "2동 23층",
           space: "110m²(33평)",
           date: "22.12.27",
           kind: "전세",
@@ -90,7 +117,7 @@ const addInfo = () => {
         },
         {
           id: 5,
-          floor: "104동 19층",
+          floor: "5동 19층",
           space: "110m²(33평)",
           date: "22.12.22",
           kind: "매매",
@@ -98,28 +125,38 @@ const addInfo = () => {
         },
       ],
       basicInfo: {
-        adress: "서울특별시 서초구 서초2동 1744",
-        createDate: "2020년 09월",
-        households: "1317 (총12개동)",
+        adress: "부산광역시 진구 112-15",
+        createDate: "1995년 3월",
+        households: "63세대 (총12개동)",
         ablePark: "1.91세대",
-        heat: "지역난방, 열병합",
+        heat: "지역난방, 도시가스",
       },
     });
 };
 
 // test.forEach(item => console.log(item));
-// const cardAddInfo = () => {
-//   test.forEach(item => {
-//     db.collection("card").add(item);
-//   });
-// };
+const cardAddInfo = () => {
+  db.collection("card").add({
+    id: 40,
+    name: "더퍼스트관희 1차",
+    rank: 40,
+    info: {
+      space: "110m²(32평)",
+      prediction: 16,
+      sellingPrice: 26.3,
+      jeonsePrice: 16,
+      graphImg: "",
+      realImg: "",
+    },
+  });
+};
 
 const Home = () => {
   useEffect(() => {
     getRank();
   }, []);
   const onSubmit = () => {
-    addInfo();
+    cardAddInfo();
   };
 
   return (

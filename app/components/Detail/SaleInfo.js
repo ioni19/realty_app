@@ -11,7 +11,7 @@ import {
 import {useNavigation} from "@react-navigation/native";
 import {mainColor} from "../../theme/theme";
 import Icon from "react-native-vector-icons/dist/AntDesign";
-import {saleInfoData} from "../../mockData/saleInfoData";
+import noSale from "../../../assets/images/noSale.png";
 
 const SaleInfo = ({data, setSaleInfoY}) => {
   const navigation = useNavigation();
@@ -36,13 +36,16 @@ const SaleInfo = ({data, setSaleInfoY}) => {
         }}>
         <SectionTitle style={{marginBottom: 10}}>매물 정보</SectionTitle>
         {data === null ? (
-          <Text>매물정보없음</Text>
+          <ImageBox>
+            <Image source={noSale} />
+            <Notice>아직 거래 나온 매물이 없네요</Notice>
+          </ImageBox>
         ) : (
           resArr.map(item => <Card key={item.id} data={item} />)
         )}
       </StyledContainer>
       <HLine />
-      {data !== null && (
+      {(data !== null && data.length > 2) && (
         <MoreBtn onPress={handleClick}>
           <MoreText>매물 더보기+</MoreText>
         </MoreBtn>
@@ -81,6 +84,25 @@ const Card = ({data}) => {
 const Container = styled.View`
   flex-direction: row;
   margin: 30px 15px 0;
+`;
+
+const ImageBox = styled.View`
+  width: 100%;
+  height: 220px;
+`;
+
+const Image = styled.Image`
+  position: relative;
+  margin: auto;
+  width: 75%;
+  height: 200px;
+`;
+
+const Notice = styled.Text`
+  position: absolute;
+  font-size: 17px;
+  top: 60%;
+  left: 23%;
 `;
 
 const LeftBox = styled.View`
