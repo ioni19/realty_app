@@ -1,17 +1,16 @@
 import React, {useEffect, useState, useRef} from "react";
 import styled from "styled-components/native";
-import {View, Text, FlatList, ScrollView, TouchableOpacity} from "react-native";
 import Card from "../components/Card";
 import SearchModal from "../components/SearchModal";
 import SearchBar from "../components/SearchBar";
 import {bgColor} from "../theme/theme";
 import {getCards} from "../lib/card";
-import {getAddress} from "../lib/product";
 
 const Search = () => {
+  const [loading, setLoading] = useState(true); // 로딩중인지 아닌지를 담기위한 state
+  const [cardsData, setCardsData] = useState([]); // API로부터 받아온 내 피드 데이터를 배열에 저장
+
   const [cardData, setCardData] = useState(null);
-  const [addressData, setAddressData] = useState([]);
-  // const [filterData, setFilterData] = useState([]);
   const [sort, setSort] = useState("이름");
   const [isOpen, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -31,6 +30,7 @@ const Search = () => {
 
   useEffect(() => {
     getCards(sortKey[sort], setCardData);
+    // fetchCardsData();
   }, [sort]);
 
   let filterData = [];
@@ -59,8 +59,8 @@ const Search = () => {
           keyExtractor={item => item.id}
           alwaysBounceVertical={false}
           bounces={false}
-          onEndReached={()=>alert('끝')}
-          onEndReachedTreshold={0.5}
+          onEndReached={() => alert("끝")}
+          onEndReachedThreshold={0.4}
           renderItem={({item}) => <Card data={item} />}
         />
         {isOpen && (
@@ -68,6 +68,7 @@ const Search = () => {
             data={filterData}
             setOpen={setOpen}
             setCardData={setCardData}
+            query={query}
           />
         )}
       </>

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Text, View} from "react-native";
 import styled from "styled-components/native";
 import reportData from "../mockData/reportData";
-import {bgColor, SCREEN_WIDTH} from "../theme/theme";
+import {bgColor, mainColor, SCREEN_WIDTH} from "../theme/theme";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {getAddress} from "../lib/product";
 
@@ -36,10 +36,24 @@ const SearchModal = ({query, data, setOpen, setCardData}) => {
         {data.slice(0, 8).map(item => {
           return (
             <SeacrhCard onPress={() => changeToSearchData(item)} key={item.id}>
-              <Icon>
-                <Ionicons name='location-outline' size={18} color={"white"} />
-              </Icon>
-              <MdText>{combinedText(item)}</MdText>
+              {query && (
+                <>
+                  <Icon>
+                    <Ionicons
+                      name='location-outline'
+                      size={18}
+                      color={"white"}
+                    />
+                  </Icon>
+                  <MdText>
+                    <MdText>{combinedText(item).split(query)[0]}</MdText>
+                    <MdText color>{query}</MdText>
+                    <MdText>{combinedText(item).split(query)[1]}</MdText>
+                  </MdText>
+                </>
+              )}
+
+              {/* <MdText>{combinedText(item)}</MdText> */}
             </SeacrhCard>
           );
         })}
@@ -71,6 +85,7 @@ const SeacrhCard = styled.TouchableOpacity`
 const MdText = styled.Text`
   font-size: 16px;
   font-weight: 300;
+  color: ${props => props.color && mainColor};
 `;
 
 const Icon = styled.View`

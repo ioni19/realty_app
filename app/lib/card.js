@@ -5,6 +5,7 @@ export const getCards = (field, func) => {
   let dataArr = [];
   db.collection("card")
     .orderBy(field, "asc")
+    .limit(15)
     .get()
     .then(query => {
       query.forEach(el => {
@@ -14,6 +15,24 @@ export const getCards = (field, func) => {
       func(dataArr);
     });
 };
+
+export const getMoreCards = (field, func, after) => {
+  let dataArr = [];
+  db.collection("card")
+    .orderBy(field, "asc")
+    .limit(15)
+    .startAfter(after)
+    .get()
+    .then(query => {
+      query.forEach(el => {
+        const data = el.data();
+        dataArr.push(data);
+      });
+      func(dataArr);
+    });
+};
+
+
 // export const getFireData = collection => {
 //   db.collection(collection)
 //     .get()
