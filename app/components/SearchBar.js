@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components/native";
 import {TextInput, Text, View} from "react-native";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {SCREEN_HEIGHT, mainColor} from "../theme/theme";
 
 const sortKind = ["수익순", "가격순", "인기순"];
-const SearchBar = ({setSort, sort}) => {
+const SearchBar = ({setSort, sort, setOpen, onChangeText, setCardData}) => {
   const handleSort = text => {
     setSort(text);
+  };
+
+  const changeToSearchData = () => {
+    setCardData(filterData);
+    setOpen(false);
   };
 
   return (
@@ -17,8 +22,10 @@ const SearchBar = ({setSort, sort}) => {
           placeholder='검색어를 입력해 주세요. [지역, 집 이름, 가격]'
           returnKeyType='search'
           style={{width: "90%"}}
+          onChangeText={onChangeText}
+          onKeyPress={() => setOpen(true)}
         />
-        <SearchBtn activeOpacity={1}>
+        <SearchBtn onPress={changeToSearchData} activeOpacity={1}>
           <Ionicons name='search-outline' size={24} />
         </SearchBtn>
       </SearchInputWrapper>

@@ -82,7 +82,7 @@ const Title = styled.View`
   align-items: center;
 `;
 
-const Name = styled.Text`
+const Name = styled.Text.attrs({ellipsizeMode: "tail", numberOfLines: 1})`
   font-weight: 500;
   font-size: 16px;
 `;

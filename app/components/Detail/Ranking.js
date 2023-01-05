@@ -96,9 +96,15 @@ const NameContainer = styled.View`
   width: 58%;
 `;
 
-const NameWrapper = styled.TouchableOpacity.attrs({activeOpacity: 1})``;
+const NameWrapper = styled.TouchableOpacity.attrs({
+  activeOpacity: 1,
+})`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`;
 
-const NameText = styled.Text`
+const NameText = styled.Text.attrs({ellipsizeMode: "tail", numberOfLines: 1})`
   margin: 2px 0;
   color: ${props => (props.myRank ? "black" : "rgba(0,0,0,0.3)")};
   font-size: ${props => (props.myRank ? "26px" : "19px")};

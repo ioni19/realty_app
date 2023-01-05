@@ -27,41 +27,82 @@ const getRank = () => {
 
 const addInfo = () => {
   db.collection("product")
-    .doc("상품29")
+    .doc("순위2")
     .set({
-      id: 29,
+      id: 2,
       ranking: {
-        myName: "미소지움",
-        myRank: 29,
-        prevName: "우경싸이트빌",
-        nextName: "갈곶피오레",
+        myName: "래미안리더스원",
+        myRank: 2,
+        prevName: "디에이치반포라클라스",
+        nextName: "아크로리버파크",
       },
       itemScore: {
-        jeonsePercent: [58.4, 69],
-        gapPrice: ["1.5억", 44],
-        totalPrice: ["703.7억", 56],
-        flatPrice: ["1.4천만", 42],
+        jeonsePercent: [991, 15],
+        gapPrice: ["6.2억", 14],
+        totalPrice: ["1.7조", 3],
+        flatPrice: ["7.6천만", 1],
       },
       priceInfo: {
         widthType: [
           {
             id: 1,
             households: 192,
-            type: 26,
+            type: 33,
             supplyArea: 40,
             dedicatedArea: 28,
-            sellingPrice: "3.7억원",
-            jeonsePrice: "2.2억원",
+            sellingPrice: "42.7억원",
+            jeonsePrice: "16.6억원",
           },
         ],
       },
-      saleInfo: null,
+      saleInfo: [
+        {
+          id: 1,
+          floor: "104동 19층",
+          space: "110m²(33평)",
+          date: "22.12.31",
+          kind: "전세",
+          price: 18,
+        },
+        {
+          id: 2,
+          floor: "104동 1층",
+          space: "110m²(33평)",
+          date: "22.12.27",
+          kind: "매매",
+          price: 34.5,
+        },
+        {
+          id: 3,
+          floor: "106동 25층",
+          space: "110m²(33평)",
+          date: "22.12.27",
+          kind: "전세",
+          price: 17.9,
+        },
+        {
+          id: 4,
+          floor: "106동 25층",
+          space: "110m²(33평)",
+          date: "22.12.27",
+          kind: "전세",
+          price: 17.9,
+        },
+        {
+          id: 5,
+          floor: "104동 19층",
+          space: "110m²(33평)",
+          date: "22.12.22",
+          kind: "매매",
+          price: 34.5,
+        },
+      ],
       basicInfo: {
-        adress: "경기도 오산시 대원동 906",
-        createDate: "2017년 07월",
-        households: "192세대 (총3개동)",
-        ablePark: "1.08세대",
-        heat: "개별난방, 도시가스",
+        adress: "서울특별시 서초구 서초2동 1744",
+        createDate: "2020년 09월",
+        households: "1317 (총12개동)",
+        ablePark: "1.91세대",
+        heat: "지역난방, 열병합",
       },
     });
 };

@@ -7,15 +7,15 @@ import {useNavigation} from '@react-navigation/native';
 const My = () => {
   // const navigation = useNavigation();
 
-  // const removeData = async () => {
-  //   try {
-  //     await AsyncStorage.removeItem('accessToken');
-  //   } catch (e) {
-  //     console.log(e);
-  //     // error reading value
-  //   }
-  //   navigation.replace('로그인');
-  // };
+  const removeData = async () => {
+    try {
+      await AsyncStorage.removeItem('accessToken');
+    } catch (e) {
+      console.log(e);
+      // error reading value
+    }
+    navigation.replace('로그인');
+  };
 
   return (
     <SafeView>

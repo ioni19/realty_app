@@ -11,3 +11,18 @@ export const getProduct = (id, func) => {
       });
     });
 };
+
+export const getAddress = async func => {
+  let dataArr = [];
+  await db
+    .collection("product")
+    .orderBy("basicInfo.adress", "asc")
+    .get()
+    .then(result => {
+      result.forEach(el => {
+        const data = el.data();
+        dataArr.push(data);
+      });
+      func(dataArr);
+    });
+};

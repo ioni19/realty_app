@@ -34,7 +34,6 @@ const Detail = ({route}) => {
     } else navigation.navigate("InReady");
   };
 
-  console.log(saleInfoY);
   useEffect(() => {
     getProduct(params.id, setProductData);
   }, []);

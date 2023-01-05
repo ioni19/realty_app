@@ -16,7 +16,7 @@ const SpaceSelectModal = ({
     handleScroll();
     setIsOpen(false);
   };
-  console.log
+
   return (
     <>
       <Container>
