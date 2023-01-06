@@ -7,9 +7,7 @@ import {bgColor} from "../theme/theme";
 import {getCards} from "../lib/card";
 
 const Search = () => {
-  const [loading, setLoading] = useState(true); // 로딩중인지 아닌지를 담기위한 state
-  const [cardsData, setCardsData] = useState([]); // API로부터 받아온 내 피드 데이터를 배열에 저장
-
+  const [initData, setInitData] = useState([]);
   const [cardData, setCardData] = useState(null);
   const [sort, setSort] = useState("이름");
   const [isOpen, setOpen] = useState(false);
@@ -19,7 +17,7 @@ const Search = () => {
     clearTimeout(timeSet.current);
     timeSet.current = setTimeout(() => {
       setQuery(text);
-    }, 500);
+    }, 300);
   };
   const sortKey = {
     수익순: "info.prediction",
@@ -30,6 +28,7 @@ const Search = () => {
 
   useEffect(() => {
     getCards(sortKey[sort], setCardData);
+    getCards(sortKey[sort], setInitData);
     // fetchCardsData();
   }, [sort]);
 
@@ -59,7 +58,7 @@ const Search = () => {
           keyExtractor={item => item.id}
           alwaysBounceVertical={false}
           bounces={false}
-          onEndReached={() => alert("끝")}
+          // onEndReached={() => alert("끝")}
           onEndReachedThreshold={0.4}
           renderItem={({item}) => <Card data={item} />}
         />
@@ -68,6 +67,7 @@ const Search = () => {
             data={filterData}
             setOpen={setOpen}
             setCardData={setCardData}
+            initData={initData}
             query={query}
           />
         )}

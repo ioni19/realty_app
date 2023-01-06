@@ -64,7 +64,7 @@ const SearchModal = ({query, data, setOpen, setCardData}) => {
 
 const Container = styled.View`
   position: absolute;
-  margin-top: 130px;
+  margin-top: 120px;
   padding: 0 20px;
   height: 420px;
   width: ${SCREEN_WIDTH}px;
@@ -72,18 +72,19 @@ const Container = styled.View`
 `;
 
 const OverLay = styled.TouchableOpacity.attrs({activeOpacity: 1})`
+  /* position: absolute; */
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
 `;
 
 const SeacrhCard = styled.TouchableOpacity`
   flex-direction: row;
-  margin: 10px 0;
+  margin: 13px 0;
   align-items: center;
 `;
 
 const MdText = styled.Text`
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
   color: ${props => props.color && mainColor};
 `;

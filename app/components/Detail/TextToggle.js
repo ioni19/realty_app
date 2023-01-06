@@ -3,23 +3,24 @@ import styled from "styled-components/native";
 import {StyleSheet} from "react-native";
 import {bgColor} from "../../theme/theme";
 
-const TextToggle = ({data, setPick}) => {
-  const [pickValue, setPickValue] = useState(data.text[0]);
+const TextToggle = ({data, pickKind, setPickKind}) => {
+  // const [pickValue, setPickValue] = useState(data.text[0]);
   const handlePickChange = text => {
-    setPickValue(text);
-    setPick(pickValue);
+    // setPickValue(text);
+    setPickKind(text);
   };
+
   return (
     <Container>
       {data.text.map((text, idx) => (
         <ToggleBtn
           key={idx}
           onPress={() => handlePickChange(text)}
-          pick={pickValue === text}
-          style={pickValue === text && styles.shadow}
+          pick={pickKind === text}
+          style={pickKind === text && styles.shadow}
           height={data.height}
           activeOpacity={1}>
-          <BtnText pick={pickValue === text} fontSize={data.fontSize}>
+          <BtnText pick={pickKind === text} fontSize={data.fontSize}>
             {text}
           </BtnText>
         </ToggleBtn>

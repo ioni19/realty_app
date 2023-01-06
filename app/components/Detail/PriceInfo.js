@@ -17,7 +17,7 @@ const period = {
 };
 
 const PriceInfo = forwardRef(({data}, ref) => {
-  const [pickKind, setPickKind] = useState("");
+  const [pickKind, setPickKind] = useState("매매");
   const [pickPeriod, setpickPeriod] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [select, SetSelect] = useState(data.widthType[0].type);
@@ -41,6 +41,7 @@ const PriceInfo = forwardRef(({data}, ref) => {
           setIsOpen={setIsOpen}
           setSelect={SetSelect}
           select={select}
+          setPickKind={setPickKind}
         />
       </Modal>
       <StyledContainer
@@ -54,18 +55,21 @@ const PriceInfo = forwardRef(({data}, ref) => {
             <SpaceKind>{select}평형 ∨</SpaceKind>
           </SpaceSelectBtn>
         </FlexRow>
-        <TextToggle data={kind} setPick={setPickKind} />
+        <TextToggle data={kind} pickKind={pickKind} setPickKind={setPickKind} />
         <TextContainer>
           <Wrapper>
             <SmallText>최근 실거래가 평균</SmallText>
             <SmallText>(3건 평균)</SmallText>
           </Wrapper>
           <Wrapper>
-            <PriceText>3.7억원</PriceText>
+            {pickKind === `매매` ? (
+              <PriceText>{data.widthType[0].sellingPrice}</PriceText>
+            ) : (
+              <PriceText>{data.widthType[0].jeonsePrice}</PriceText>
+            )}
           </Wrapper>
         </TextContainer>
         <HLine />
-        <Text onPress={handleScroll}>뉼러바</Text>
         <TextToggle period data={period} setPick={setpickPeriod} />
       </StyledContainer>
     </>

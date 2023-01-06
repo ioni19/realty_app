@@ -13,6 +13,7 @@ const SearchBar = ({setSort, sort, setOpen, onChangeText, setCardData}) => {
   const changeToSearchData = () => {
     setCardData(filterData);
     setOpen(false);
+    setCardData(initData);
   };
 
   return (
@@ -20,8 +21,10 @@ const SearchBar = ({setSort, sort, setOpen, onChangeText, setCardData}) => {
       <SearchInputWrapper>
         <TextInput
           placeholder='검색어를 입력해 주세요. [지역, 집 이름, 가격]'
-          returnKeyType='search'
           style={{width: "90%"}}
+          returnKeyType='search'
+          autoCorrect={false}
+          onSubmitEditting={changeToSearchData}
           onChangeText={onChangeText}
           onKeyPress={() => setOpen(true)}
         />

@@ -5,7 +5,6 @@ export const getCards = (field, func) => {
   let dataArr = [];
   db.collection("card")
     .orderBy(field, "asc")
-    .limit(15)
     .get()
     .then(query => {
       query.forEach(el => {

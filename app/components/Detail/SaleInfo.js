@@ -11,7 +11,7 @@ import {
 import {useNavigation} from "@react-navigation/native";
 import {mainColor} from "../../theme/theme";
 import Icon from "react-native-vector-icons/dist/AntDesign";
-import noSale from "../../../assets/images/noSale.png";
+import noSale from "../../../assets/images/nnoSale.png";
 
 const SaleInfo = ({data, setSaleInfoY}) => {
   const navigation = useNavigation();
@@ -94,7 +94,7 @@ const ImageBox = styled.View`
 const Image = styled.Image`
   position: relative;
   margin: auto;
-  width: 75%;
+  width: 90%;
   height: 200px;
 `;
 
