@@ -21,6 +21,8 @@ const PriceInfo = forwardRef(({data}, ref) => {
   const [pickPeriod, setpickPeriod] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [select, SetSelect] = useState(data.widthType[0].type);
+  const [sellingPrice, setSelling] = useState(data.widthType[0].sellingPrice);
+  const [jeonsePrice, setjeonse] = useState(data.widthType[0].jeonsePrice);
   const [scrollToY, setScrollToY] = useState(0);
   const handleScroll = () => {
     ref.scrollTo({y: scrollToY - 35, animated: true});
@@ -42,6 +44,8 @@ const PriceInfo = forwardRef(({data}, ref) => {
           setSelect={SetSelect}
           select={select}
           setPickKind={setPickKind}
+          setSelling={setSelling}
+          setjeonse={setjeonse}
         />
       </Modal>
       <StyledContainer
@@ -55,7 +59,7 @@ const PriceInfo = forwardRef(({data}, ref) => {
             <SpaceKind>{select}평형 ∨</SpaceKind>
           </SpaceSelectBtn>
         </FlexRow>
-        <TextToggle data={kind} pickKind={pickKind} setPickKind={setPickKind} />
+        <TextToggle data={kind} pickKind={pickKind} setPick={setPickKind} />
         <TextContainer>
           <Wrapper>
             <SmallText>최근 실거래가 평균</SmallText>
@@ -63,14 +67,19 @@ const PriceInfo = forwardRef(({data}, ref) => {
           </Wrapper>
           <Wrapper>
             {pickKind === `매매` ? (
-              <PriceText>{data.widthType[0].sellingPrice}</PriceText>
+              <PriceText>{sellingPrice}</PriceText>
             ) : (
-              <PriceText>{data.widthType[0].jeonsePrice}</PriceText>
+              <PriceText>{jeonsePrice}</PriceText>
             )}
           </Wrapper>
         </TextContainer>
         <HLine />
-        <TextToggle period data={period} setPick={setpickPeriod} />
+        <TextToggle
+          period
+          data={period}
+          pickKind={pickPeriod}
+          setPick={setpickPeriod}
+        />
       </StyledContainer>
     </>
   );

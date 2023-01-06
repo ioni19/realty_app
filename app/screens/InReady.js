@@ -1,5 +1,4 @@
 import React from "react";
-import {TouchableOpacity} from "react-native";
 import styled from "styled-components/native";
 import {useNavigation} from "@react-navigation/native";
 import ready from "../../assets/images/001.png";

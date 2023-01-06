@@ -11,6 +11,8 @@ const SpaceSelectModal = ({
   setSelect,
   select,
   handleScroll,
+  setSelling,
+  setjeonse
 }) => {
   const closeModal = () => {
     handleScroll();
@@ -33,6 +35,8 @@ const SpaceSelectModal = ({
             setSelect={setSelect}
             select={select}
             closeModal={closeModal}
+            setSelling={setSelling}
+            setjeonse={setjeonse}
           />
         ))}
       </Container>
@@ -40,7 +44,7 @@ const SpaceSelectModal = ({
   );
 };
 
-const WidthType = ({data, select, setSelect, closeModal}) => {
+const WidthType = ({data, select, setSelect, closeModal, setSelling, setjeonse}) => {
   const {
     households,
     type,
@@ -50,13 +54,15 @@ const WidthType = ({data, select, setSelect, closeModal}) => {
     jeonsePrice,
   } = data;
 
-  const handleSelect = type => {
-    setSelect(type);
+  const handleSelect = data => {
+    setSelect(data.type);
+    setSelling(data.sellingPrice);
+    setjeonse(data.jeonsePrice)
     closeModal();
   };
 
   return (
-    <TextBox onPress={() => handleSelect(type)}>
+    <TextBox onPress={() => handleSelect(data)}>
       <MarginText>
         <BoldText pick={select === type} width='25%'>
           {type} 평형

@@ -3,11 +3,11 @@ import styled from "styled-components/native";
 import {StyleSheet} from "react-native";
 import {bgColor} from "../../theme/theme";
 
-const TextToggle = ({data, pickKind, setPickKind}) => {
+const TextToggle = ({data, pickKind, setPick}) => {
   // const [pickValue, setPickValue] = useState(data.text[0]);
   const handlePickChange = text => {
     // setPickValue(text);
-    setPickKind(text);
+    setPick(text);
   };
 
   return (
