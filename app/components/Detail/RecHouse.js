@@ -10,15 +10,18 @@ import {imgArr} from "../../mockData/basicImg";
 import RecHouseData from "../../mockData/recHouseData";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {HeartIcon} from "../../screens/Detail";
+import {getRecCards} from "../../lib/card";
 
 const RecHouse = () => {
   const [starRate, setStarRate] = useState(null);
+  const [recData, setRecData] = useState([]);
   const ratingCompleted = rate => {
     storeStarRate(rate);
   };
 
   useEffect(() => {
     getStarRate();
+    getRecCards(setRecData);
   }, []);
 
   const storeStarRate = async rate => {
@@ -37,7 +40,7 @@ const RecHouse = () => {
         starRate(null);
       }
     } catch (e) {
-      console.log("별점 가져오기 에러", e);
+      // console.log("별점 가져오기 에러", e);
     }
   };
 
@@ -57,7 +60,7 @@ const RecHouse = () => {
         <SectionTitle>부동부동 추천 집</SectionTitle>
       </StyledContainer>
       <CardList
-        data={RecHouseData}
+        data={recData}
         keyExtractor={item => item.id}
         renderItem={({item}) => <RecHouseCard data={item} />}
         bouces={false}></CardList>
@@ -100,14 +103,16 @@ const RecHouse = () => {
 
 const RecHouseCard = ({data}) => {
   const navigation = useNavigation();
-  const {id, name, info} = data;
+  const {id, name, address, info} = data;
   const [pick, setPick] = useState(false);
   const colorChange = () => {
     setPick(pick => !pick);
   };
   return (
     <Card
-      onPress={() => navigation.push("Stack", {screen: "상세정보"})}
+      onPress={() =>
+        navigation.push("Stack", {screen: "상세정보", params: {id}})
+      }
       style={styles.shadow}>
       <ImgBox>
         {info.realImg !== "" ? (
@@ -123,7 +128,8 @@ const RecHouseCard = ({data}) => {
             {info.jeonsePrice}억원
           </SmallText>
           <SmallText>
-            {info.adress} | {info.pyeong}평
+            {address.split("동 ")[0]}동 | {info.space.split("(")[1].slice(0, 2)}
+            평
           </SmallText>
         </View>
         <HeartIcon onPress={colorChange} style={{width: 40, height: 40}}>

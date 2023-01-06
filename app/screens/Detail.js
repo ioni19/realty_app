@@ -14,6 +14,7 @@ import Report from "../components/Detail/Report";
 import SaleInfo from "../components/Detail/SaleInfo";
 import {bgColor} from "../theme/theme";
 import {getProduct} from "../lib/product";
+import Prediction from "../components/Detail/Predicion";
 
 const Detail = ({route}) => {
   const navigation = useNavigation();
@@ -52,6 +53,8 @@ const Detail = ({route}) => {
           <PriceInfo data={productData.priceInfo} ref={scrollRef} />
           <Gap />
           <SaleInfo data={productData.saleInfo} setSaleInfoY={setSaleInfoY} />
+          <Gap />
+          <Prediction />
           <Gap />
           <InfoByField />
           <Gap />

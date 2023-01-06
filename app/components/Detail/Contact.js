@@ -4,11 +4,12 @@ import {Text, TouchableOpacity} from "react-native";
 import styled from "styled-components/native";
 import {StyledContainer} from "../../screens/Detail";
 import {mainColor} from "../../theme/theme";
+import character from "../../../assets/images/character.png";
 
 const Contact = () => {
   const navigation = useNavigation();
   const goToContact = () => {
-    navigation.navigate("contact");
+    navigation.navigate("InReady");
   };
 
   return (
@@ -19,6 +20,7 @@ const Contact = () => {
       <TouchableOpacity onPress={goToContact} activeOpacity={1}>
         <BoldText>정정 및 요청 문의하기 &gt;</BoldText>
       </TouchableOpacity>
+      <Image source={character} />
     </StyledContainer>
   );
 };
@@ -34,6 +36,14 @@ const BoldText = styled.Text`
   font-size: 17px;
   color: ${mainColor};
   font-weight: 600;
+`;
+
+const Image = styled.Image`
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 60px;
+  height: 70px;
 `;
 
 export default Contact;

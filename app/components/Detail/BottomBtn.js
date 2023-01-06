@@ -43,7 +43,7 @@ const FlexRow = styled.View`
   justify-content: space-between;
 `;
 
-const WhiteBtn = styled.TouchableOpacity.attrs({activeOpacity: 1})`
+export const WhiteBtn = styled.TouchableOpacity.attrs({activeOpacity: 1})`
   align-items: center;
   justify-content: center;
   flex-direction: row;

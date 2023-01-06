@@ -27,7 +27,11 @@ const Root = () => {
         component={Login}
         options={{headerShown: false}}
       />
-      <Nav.Screen name='Tabs' component={Tabs} options={{headerShown: false}} />
+      <Nav.Screen
+        name='Tabs'
+        component={Tabs}
+        options={{headerShown: false, gestureEnabled: false}}
+      />
       <Nav.Screen
         name='Stack'
         component={Stack}
@@ -43,7 +47,7 @@ const Root = () => {
         options={{
           headerBackTitleVisible: false,
           headerTintColor: "black",
-          title: "상세정보의 상세정보",
+          title: "준비중",
         }}
       />
     </Nav.Navigator>
