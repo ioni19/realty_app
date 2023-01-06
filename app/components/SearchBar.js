@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components/native";
-import {TextInput, Text, View} from "react-native";
+import {TextInput} from "react-native";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
-import {SCREEN_HEIGHT, mainColor, bgColor} from "../theme/theme";
+import {mainColor} from "../theme/theme";
 
 const sortKind = ["수익순", "가격순", "인기순"];
 const SearchBar = ({

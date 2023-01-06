@@ -1,21 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Keyboard} from "react-native";
 import styled from "styled-components/native";
-import reportData from "../mockData/reportData";
-import {bgColor, mainColor, SCREEN_HEIGHT, SCREEN_WIDTH} from "../theme/theme";
+import { mainColor, SCREEN_HEIGHT, SCREEN_WIDTH} from "../theme/theme";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
-import {getAddress} from "../lib/product";
 
 const SearchModal = ({query, data, setOpen, setCardData}) => {
-  const [addressData, setAddressData] = useState([]);
-  const [filterData, setFilterData] = useState([]);
-  const [test, setTest] = useState([]);
-  const [finalData, setFinalData] = useState([]);
 
-  // query.forEach(el => {
-  //   const data = el.data();
-  //   dataArr.push(data);
-  // });
   const changeToSearchData = item => {
     setCardData([item]);
     setOpen(false);

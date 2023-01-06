@@ -7,8 +7,6 @@ import Search from "../screens/Search";
 import My from "../screens/My";
 import Home from "../screens/Home";
 import mainColor from "../theme/theme";
-import Stack from "./Stack";
-import SearchCopy from "../screens/Search copy";
 
 const Tab = createBottomTabNavigator();
 

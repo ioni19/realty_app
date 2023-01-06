@@ -5,7 +5,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import naverIcon from "../../assets/icons/naver.png";
 import kakaoIcon from "../../assets/icons/kakao.png";
 import {useNavigation} from "@react-navigation/native";
-import {Button} from "react-native";
 
 const consumerKey = "dSRuls9mwd8mLC5grvGa";
 const consumerSecret = "nluxPu14So";

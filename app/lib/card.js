@@ -44,16 +44,3 @@ export const getRecCards = func => {
       func(dataArr);
     });
 };
-
-// export const getFireData = collection => {
-//   db.collection(collection)
-//     .get()
-//     .then(result => {
-//       console.log("Total users: ", result.size);
-
-//       result.forEach(item => {
-//         // console.log("User ID: ", item.id, item.data());
-//         return item;
-//       });
-//     });
-// };

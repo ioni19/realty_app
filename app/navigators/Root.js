@@ -5,7 +5,6 @@ import Stack from "./Stack";
 import Tabs from "./Tabs";
 import Login from "../screens/Login";
 import {useNavigation} from "@react-navigation/native";
-import Contact from "../screens/Contact";
 import InReady from "../screens/InReady";
 
 const Root = () => {
