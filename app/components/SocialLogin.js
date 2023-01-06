@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import styled from 'styled-components/native';
-import NaverLogin, {NaverLoginResponse} from '@react-native-seoul/naver-login';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import naverIcon from '../../assets/icons/naver.png';
-import kakaoIcon from '../../assets/icons/kakao.png';
-import {useNavigation} from '@react-navigation/native';
-import {Button} from 'react-native';
+import React, {useEffect, useState} from "react";
+import styled from "styled-components/native";
+import NaverLogin, {NaverLoginResponse} from "@react-native-seoul/naver-login";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import naverIcon from "../../assets/icons/naver.png";
+import kakaoIcon from "../../assets/icons/kakao.png";
+import {useNavigation} from "@react-navigation/native";
+import {Button} from "react-native";
 
-const consumerKey = 'dSRuls9mwd8mLC5grvGa';
-const consumerSecret = 'nluxPu14So';
-const appName = '부둥부둥';
-const serviceUrlScheme = 'naverLogin';
+const consumerKey = "dSRuls9mwd8mLC5grvGa";
+const consumerSecret = "nluxPu14So";
+const appName = "부둥부둥";
+const serviceUrlScheme = "naverLogin";
 
 const SocialLogin = () => {
   const [success, setSuccessResponse] = useState();
@@ -44,8 +44,9 @@ const SocialLogin = () => {
   const storeData = async value => {
     try {
       const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem('accessToken', jsonValue).then(() =>
-        navigation.replace('Tabs'),
+      console.log(jsonValue);
+      await AsyncStorage.setItem("accessToken", jsonValue).then(() =>
+        navigation.replace("Tabs"),
       );
     } catch (e) {
       console.log(e);
@@ -65,15 +66,15 @@ const SocialLogin = () => {
 
   return (
     <Container>
-      <Btn onPress={login} color={'#03c75a'}>
+      <Btn onPress={login} color={"#03c75a"}>
         <Logo source={naverIcon}></Logo>
         <MdText>네이버 로그인</MdText>
       </Btn>
-      <Btn color={'#fee500'}>
+      <Btn color={"#fee500"}>
         <Logo kakao source={kakaoIcon}></Logo>
         <MdText kakao> 카카오톡 로그인</MdText>
       </Btn>
-      <Btn color={'black'}>
+      <Btn color={"black"}>
         <MdText> Apple로 로그인</MdText>
       </Btn>
     </Container>
@@ -98,15 +99,15 @@ const Btn = styled.TouchableOpacity.attrs({activeOpacity: 1})`
 `;
 
 const Logo = styled.Image`
-  height: ${props => (props.kakao ? '23px' : '45px')};
-  width: ${props => (props.kakao ? '23px' : '45px')};
+  height: ${props => (props.kakao ? "23px" : "45px")};
+  width: ${props => (props.kakao ? "23px" : "45px")};
 `;
 
 const MdText = styled.Text`
   text-align: center;
-  color: ${props => (props.kakao ? 'black' : 'white')};
+  color: ${props => (props.kakao ? "black" : "white")};
   font-size: 22px;
-  font-weight: ${props => (props.kakao ? '400' : '500')};
+  font-weight: ${props => (props.kakao ? "400" : "500")};
 `;
 
 export default SocialLogin;

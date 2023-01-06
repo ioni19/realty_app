@@ -5,10 +5,12 @@ import SearchModal from "../components/SearchModal";
 import SearchBar from "../components/SearchBar";
 import {bgColor} from "../theme/theme";
 import {getCards} from "../lib/card";
+import {getDescCards} from "../lib/card";
 
 const Search = () => {
   const [initData, setInitData] = useState([]);
   const [cardData, setCardData] = useState(null);
+  const [sortedData, setSortedData] = useState();
   const [sort, setSort] = useState("이름");
   const [isOpen, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -29,6 +31,7 @@ const Search = () => {
   useEffect(() => {
     getCards(sortKey[sort], setCardData);
     getCards(sortKey[sort], setInitData);
+    getDescCards(sortKey[sort], setSortedData);
     // fetchCardsData();
   }, [sort]);
 
@@ -52,11 +55,7 @@ const Search = () => {
           initData={initData}
         />
         <CardList
-          data={
-            sort === "수익순" || sort === "가격순"
-              ? cardData.reverse()
-              : cardData
-          }
+          data={sort === "수익순" || sort === "가격순" ? sortedData : cardData}
           keyExtractor={item => item.id}
           alwaysBounceVertical={false}
           bounces={false}

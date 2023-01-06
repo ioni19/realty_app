@@ -15,6 +15,20 @@ export const getCards = (field, func) => {
     });
 };
 
+export const getDescCards = (field, func) => {
+  let dataArr = [];
+  db.collection("card")
+    .orderBy(field, "desc")
+    .get()
+    .then(query => {
+      query.forEach(el => {
+        const data = el.data();
+        dataArr.push(data);
+      });
+      func(dataArr);
+    });
+};
+
 export const getRecCards = func => {
   let dataArr = [];
   db.collection("card")
