@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {Text, View} from "react-native";
+import {Keyboard} from "react-native";
 import styled from "styled-components/native";
 import reportData from "../mockData/reportData";
-import {bgColor, mainColor, SCREEN_WIDTH} from "../theme/theme";
+import {bgColor, mainColor, SCREEN_HEIGHT, SCREEN_WIDTH} from "../theme/theme";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {getAddress} from "../lib/product";
 
@@ -21,18 +21,18 @@ const SearchModal = ({query, data, setOpen, setCardData}) => {
     setOpen(false);
   };
 
-  useEffect(() => {
-    const result = setFilterData();
-  }, [query]);
+  const clickBackdrop = () => {
+    setOpen(false);
+    Keyboard.dismiss();
+  };
 
   const combinedText = item => {
     return `${item.address.split("동")[0]}동 ${item.name}`;
   };
 
   return (
-    <>
-      <OverLay onPress={() => setOpen(false)}></OverLay>
-      <Container>
+    <Container onPress={clickBackdrop}>
+      <SearchList>
         {data.slice(0, 8).map(item => {
           return (
             <SeacrhCard onPress={() => changeToSearchData(item)} key={item.id}>
@@ -52,32 +52,29 @@ const SearchModal = ({query, data, setOpen, setCardData}) => {
                   </MdText>
                 </>
               )}
-
-              {/* <MdText>{combinedText(item)}</MdText> */}
             </SeacrhCard>
           );
         })}
-      </Container>
-    </>
+      </SearchList>
+    </Container>
   );
 };
 
-const Container = styled.View`
-  position: absolute;
+const Container = styled.TouchableOpacity.attrs({activeOpacity: 1})`
+  height: ${SCREEN_HEIGHT}px;
   margin-top: 120px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
+const SearchList = styled.View`
   padding: 0 20px;
-  height: 420px;
+  height: 410px;
   width: ${SCREEN_WIDTH}px;
   background-color: white;
 `;
 
-const OverLay = styled.TouchableOpacity.attrs({activeOpacity: 1})`
-  /* position: absolute; */
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 100%;
-`;
-
-const SeacrhCard = styled.TouchableOpacity`
+const SeacrhCard = styled.TouchableOpacity.attrs({activeOpacity: 1})`
   flex-direction: row;
   margin: 13px 0;
   align-items: center;

@@ -2,10 +2,18 @@ import React, {useState} from "react";
 import styled from "styled-components/native";
 import {TextInput, Text, View} from "react-native";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
-import {SCREEN_HEIGHT, mainColor} from "../theme/theme";
+import {SCREEN_HEIGHT, mainColor, bgColor} from "../theme/theme";
 
 const sortKind = ["수익순", "가격순", "인기순"];
-const SearchBar = ({setSort, sort, setOpen, onChangeText, setCardData}) => {
+const SearchBar = ({
+  filterData,
+  setSort,
+  sort,
+  setOpen,
+  onChangeText,
+  setCardData,
+  initData,
+}) => {
   const handleSort = text => {
     setSort(text);
   };
@@ -13,7 +21,6 @@ const SearchBar = ({setSort, sort, setOpen, onChangeText, setCardData}) => {
   const changeToSearchData = () => {
     setCardData(filterData);
     setOpen(false);
-    setCardData(initData);
   };
 
   return (
@@ -24,9 +31,15 @@ const SearchBar = ({setSort, sort, setOpen, onChangeText, setCardData}) => {
           style={{width: "90%"}}
           returnKeyType='search'
           autoCorrect={false}
-          onSubmitEditting={changeToSearchData}
+          onSubmitEditing={changeToSearchData}
           onChangeText={onChangeText}
           onKeyPress={() => setOpen(true)}
+          clearButtonMode={"always"}
+          onPressIn={() => {
+            setTimeout(() => {
+              setCardData(initData);
+            }, 2000);
+          }}
         />
         <SearchBtn onPress={changeToSearchData} activeOpacity={1}>
           <Ionicons name='search-outline' size={24} />
@@ -91,14 +104,6 @@ const SmallText = styled.Text`
   color: ${props => (props.color ? mainColor : "rgba(0, 0, 0, 0.3)")};
   font-weight: 600;
   margin: 0 7px;
-`;
-
-const VerticalLine = styled.Text`
-  margin: 0 7px;
-  width: 1px;
-  height: 100%;
-  background-color: ${props =>
-    props.sort === "인기순" ? "white" : "rgba(0, 0, 0, 0.3)"};
 `;
 
 const FilterBtn = styled.TouchableOpacity``;

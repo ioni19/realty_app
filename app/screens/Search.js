@@ -43,11 +43,13 @@ const Search = () => {
     <SafeView>
       <>
         <SearchBar
+          filterData={filterData}
           setSort={setSort}
           sort={sort}
           setOpen={setOpen}
           onChangeText={onChangeText}
           setCardData={setCardData}
+          initData={initData}
         />
         <CardList
           data={
