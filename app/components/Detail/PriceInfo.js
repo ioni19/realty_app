@@ -4,7 +4,13 @@ import Modal from "react-native-modal";
 import {View, Text, StyleSheet} from "react-native";
 import TextToggle from "./TextToggle";
 import {bgColor, mainColor, SCREEN_WIDTH} from "../../theme/theme";
-import {StyledContainer, SectionTitle, HLine} from "../../screens/Detail";
+import {
+  StyledContainer,
+  SectionTitle,
+  HLine,
+  MoreBtn,
+  MoreText,
+} from "../../screens/Detail";
 import Ranking from "./Ranking";
 import SpaceSelectModal from "./SpaceSelectModal";
 import {widthDataType} from "../../mockData/widthTypeData";
@@ -18,7 +24,7 @@ const period = {
 
 const PriceInfo = forwardRef(({data}, ref) => {
   const [pickKind, setPickKind] = useState("매매");
-  const [pickPeriod, setpickPeriod] = useState("");
+  const [pickPeriod, setpickPeriod] = useState("전체");
   const [isOpen, setIsOpen] = useState(false);
   const [select, SetSelect] = useState(data.widthType[0].type);
   const [sellingPrice, setSelling] = useState(data.widthType[0].sellingPrice);
@@ -80,7 +86,15 @@ const PriceInfo = forwardRef(({data}, ref) => {
           pickKind={pickPeriod}
           setPick={setpickPeriod}
         />
+        <Graph>
+          <Text>그래프</Text>
+        </Graph>
+      
       </StyledContainer>
+      <HLine />
+        <MoreBtn>
+          <MoreText>실거래가 더보기+</MoreText>
+        </MoreBtn>
     </>
   );
 });
@@ -138,6 +152,14 @@ const PriceText = styled.Text`
   color: ${mainColor};
   font-size: 30px;
   font-weight: 700;
+`;
+
+const Graph = styled.View`
+  align-items: center;
+  justify-content: center;
+  background-color: ${bgColor};
+  width: 100%;
+  height: 200px;
 `;
 
 export default PriceInfo;

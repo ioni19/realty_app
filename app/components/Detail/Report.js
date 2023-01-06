@@ -65,12 +65,12 @@ const Box = styled.View`
   margin-top: 20px;
 `;
 
-const Description = styled.Text`
+export const Description = styled.Text`
   font-size: 15px;
   font-weight: 300;
 `;
 
-const Highlight = styled.Text`
+export const Highlight = styled.Text`
   font-size: 15px;
   font-weight: 600;
   color: ${mainColor};

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import map from "../../../assets/images/map.png";
 import {StyledContainer, SectionTitle} from "../../screens/Detail";
 
 const BasicInfo = ({data}) => {
@@ -13,6 +14,7 @@ const BasicInfo = ({data}) => {
         <TextBox name='주차가능수' content={data.households} />
         <TextBox name='난방' content={data.heat} />
       </Container>
+      <Image source={map} />
     </StyledContainer>
   );
 };
@@ -33,6 +35,13 @@ const Container = styled.View`
 const FlexRow = styled.View`
   flex-direction: row;
   margin-top: 25px;
+`;
+
+const Image = styled.Image`
+  margin: 10px 15px;
+  background-color: lightgray;
+  width: 90%;
+  height: 150px;
 `;
 
 const SmallText = styled.Text`

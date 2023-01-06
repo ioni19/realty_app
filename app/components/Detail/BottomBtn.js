@@ -1,12 +1,17 @@
 import React, {useState} from "react";
 import {View} from "react-native";
 import styled from "styled-components/native";
+import {useNavigation} from "@react-navigation/native";
 import {StyledContainer} from "../../screens/Detail";
 import {mainColor} from "../../theme/theme";
 import Ionicons from "react-native-vector-icons/dist/Ionicons";
 import {HeartIcon} from "../../screens/Detail";
 
 const BottomBtn = ({isLike, colorChange, scrollFunc, saleInfo}) => {
+  const navigation = useNavigation();
+  const goToPrescription = () => {
+    navigation.navigate("Tabs", {screen: "처방전"});
+  };
   return (
     <StyledContainer style={{paddingBottom: 20}}>
       <FlexRow>
@@ -24,7 +29,7 @@ const BottomBtn = ({isLike, colorChange, scrollFunc, saleInfo}) => {
           <BoldText isLike>매물더보기+</BoldText>
         </WhiteBtn>
       </FlexRow>
-      <BlueBtn>
+      <BlueBtn onPress={goToPrescription}>
         <BoldText style={{color: "white"}}>이 단지로 처방 받기</BoldText>
       </BlueBtn>
     </StyledContainer>

@@ -52,9 +52,9 @@ const layout = {
 
 const RadarChart = () => {
   return (
-    <View style={{height: 600}}>
+    <View style={{height: 300}}>
       <Plotly data={data} layout={layout} debug enableFullPlotly />
-      <Text>바보</Text>
+      <Text></Text>
     </View>
   );
 };
