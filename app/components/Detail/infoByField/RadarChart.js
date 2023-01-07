@@ -52,7 +52,7 @@ const layout = {
 
 const RadarChart = () => {
   return (
-    <View style={{height: 300}}>
+    <View style={{height: 340}}>
       <Plotly data={data} layout={layout} debug enableFullPlotly />
       <Text></Text>
     </View>
