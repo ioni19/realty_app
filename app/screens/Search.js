@@ -6,6 +6,7 @@ import SearchBar from "../components/SearchBar";
 import {bgColor} from "../theme/theme";
 import {getCards} from "../lib/card";
 import {getDescCards} from "../lib/card";
+import {SCREEN_WIDTH} from "../theme/theme";
 
 const Search = () => {
   const [initData, setInitData] = useState([]);

@@ -47,7 +47,7 @@ const Detail = ({route}) => {
             isLike={isLike}
             colorChange={colorChange}
           />
-          {/* <Gap />
+          <Gap />
           <ItemScore data={productData.itemScore} />
           <Gap />
           <PriceInfo data={productData.priceInfo} ref={scrollRef} />
@@ -55,7 +55,7 @@ const Detail = ({route}) => {
           <SaleInfo data={productData.saleInfo} setSaleInfoY={setSaleInfoY} />
           <Gap />
           <Prediction />
-          <Gap /> */}
+          <Gap />
           <InfoByField />
           <Gap />
           <Report />

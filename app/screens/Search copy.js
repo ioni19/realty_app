@@ -14,7 +14,6 @@ const SearchCopy = () => {
   const [sort, setSort] = useState("이름");
   const [isOpen, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [test, setTest] = useState(true);
   const timeSet = useRef();
   const onChangeText = text => {
     clearTimeout(timeSet.current);

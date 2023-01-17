@@ -5,7 +5,6 @@ import {SectionTitle} from "../../screens/Detail";
 import {mainColor} from "../../theme/theme";
 
 const SpaceSelectModal = ({
-  test,
   data,
   setIsOpen,
   setSelect,
